@@ -1,0 +1,175 @@
+
+
+/*---------------------- formulario login-----------------*/
+
+/* .contenedor{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-width: 350px;
+    min-height: 100vh;
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    visibility: hidden;
+} */
+
+.contenedor{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    min-width: 350px;
+    background-position: center;
+    background-size: cover;
+    position: fixed;
+    z-index: 99;
+    visibility: hidden;
+    backdrop-filter: blur(2px);
+}
+
+.cont-form .img{
+    width: 60px;
+    border-radius: 50%;
+    position: absolute;
+    top: 0px;  
+}
+
+.cont-form{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 350px;
+    max-width: 350px;
+    height: 350px;
+    background-color: rgba(0, 0, 0, 0.80);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    box-shadow: 0px 0px 30px rgb(0, 0, 0.5);
+    transition: height .2s ease;
+    overflow: hidden;
+}
+
+.cont-form.activo{
+    height: 450px;
+}
+
+.formulario{
+    height: 100%;
+    width: 100%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    font-family: 'poppins';
+    gap: 10px;
+}
+
+.form-login{
+    transition: transform .18s ease;
+    transform: translateX(0px);
+}
+
+.cont-form.activo .form-login{
+    transition: none;
+    transform: translateX(-400px);
+}
+
+.form-registro{
+    position: absolute;
+    transition: none;
+    transform: translate(400px);
+}
+
+.cont-form.activo .form-registro{
+    transition: transform .18s ease;
+    transform: translateX(0px);
+}
+
+
+.formulario h1{
+    font-size: 1.7em;
+    color: white;
+    font-weight: 500;
+    margin-bottom: 0px;
+    margin-top: 25px;
+    font-family: 'cinzel';
+}
+
+.cont-form .cont-entrada{
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 30px;
+    border-bottom: 2px solid #a49264;
+    margin-bottom: 10px;
+}
+
+.cont-entrada .entrada{
+    margin-left: 10px;  
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    color: white;
+    border: none;
+    outline: none;
+    
+}
+.cont-entrada i{
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.cont-form .olvidaste{
+    color: white;
+    font-size: 0.7rem;
+    text-decoration: none;
+}
+
+.cont-form .cont-botones{
+    position: relative;
+    width: 100%;
+    height: 35px;
+}
+
+.cont-botones .boton{
+    background-color: #a49264;
+    color: white;
+    width: 100%;
+    height: 100%;
+    border-radius: 17px;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 400;
+    transition: .5s;
+}
+
+.cont-botones .boton:hover{
+    background-color: rgb(166, 149, 54);
+}
+
+.cont-form p{
+    color: white;
+    font-weight: 400;
+    font-size: 0.8rem;
+    margin: 0;
+}
+
+.cont-form .link-registro{
+    color: #a49264;
+}
+
+/*---------------------- formulario registro-----------------*/
+
+
+.cont-form .cont-nombre-apellido{
+    display: flex;
+    gap: 10px;
+}

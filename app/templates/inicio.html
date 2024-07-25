@@ -1,0 +1,31 @@
+
+<div class="contenido">
+
+    <div class="titulo-contenido">
+        <i class='bx bxs-home-alt-2'></i>
+        <h4>Inicio</h4>
+    </div>
+
+    <div class="data-habitaciones" id="habitaciones-container">
+        {% for habitacion in data %}
+        <div class="habitacion {{habitacion.estado}}">
+            <div class="cont-numero-tipo">
+                <div>
+                    <div class="numero">{{habitacion.cantidad}}</div>
+                </div>
+                <div class="icono">
+                    <i class='bx bxs-bed'></i>
+                </div>
+            </div>
+            
+            <div class="estado">
+                <p>{{habitacion.estado}}</p>
+                <i class='bx bxs-chevron-right'></i>
+            </div>
+            
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+

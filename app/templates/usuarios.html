@@ -1,0 +1,303 @@
+
+<div class="contenido" id="usuarios">
+
+    <div class="titulo-contenido"><h4>Usuarios</h4></div>
+
+    <div class="cont-agregar">
+        <button class="boton-crear" id="boton-crear-user">Crear nuevo</button>
+        <select name="select-usuarios" id="select-usuarios" class="select-filtros">
+            <option value="activo">Activos</option>
+            <option value="desactivo">Desactivos</option>
+            <option value="todos">Todos</option>
+        </select>
+        <input class="buscador-contenido" type="search" placeholder="Buscar">
+    </div>
+
+    <div class="data" id="contenido-usuarios">
+        
+        <table>
+            <thead class="head-tabla-user" id="head-tabla-crud">
+                <tr>
+                    <th>Usuario</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Email</th>
+                    <th>Rol</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="body-tabla-user" id="body-tabla-user">
+                {% for usuario in data %}
+                <tr>
+                    <td>{{usuario.usuario}}</td>
+                    <td>{{usuario.nombre}}</td>
+                    <td>{{usuario.apellido}}</td>
+                    <td>{{usuario.email}}</td>
+                    <td>{{usuario.rol}}</td>
+                    <td><div class="estado {{usuario.estado}}">{{usuario.estado}}</div></td>
+                    <td>
+                        <button class="acciones editar user" id="boton-editar" data-usuario="{{ usuario.usuario }}" type="button"><i class='bx bxs-edit-alt'></i></button>
+                        <button class="acciones borrar user" id="boton-borrar" data-usuario="{{ usuario.usuario }}" type="button"><i class='bx bx-x'></i></button>
+                    </td>
+                </tr>
+
+                {% endfor %}
+            </tbody>
+
+        </table>
+        
+    </div>
+
+    <div class="barra-inferior">
+        <p id="cant-reg-users"> {{ data|length }} Registros</p>
+        <div class="cont-num-pagina">
+            <i class='bx bxs-chevron-left'></i>        
+            <p>1</p>
+            <i class='bx bxs-chevron-right' ></i>
+        </div>
+    </div>
+
+</div>
+
+<!-- ---------------------------- CREAR USER -------------------------------- -->
+
+<div class="cont-form-contenido crear-user" id="cont-form-crear-user">
+    <form id="crear-user-form" action="" class="form-contenido" method="POST">
+        <div class="cont-titulo-form">
+            <h3 class="titulo-form">Crear usuario</h3>
+            <i class='bx bx-x icono-cerrar' id="icono-cerrar"></i>
+        </div>
+        <div class="form-group">
+            <label for="imput-user" class="label-input">Usuario</label>
+            <input class="imput" id="imput-user" type="text" name="usuario" placeholder="Usuario" required>
+            <label for="imput-user" class="label-error" id="error-imput-user"></label>
+        </div>
+        <div class="form-group">
+            <label for="imput-nombre-user" class="label-input">Nombre</label>
+            <input class="imput" id="imput-nombre-user" type="text" name="nombre" placeholder="Nombre" required>
+            <label for="imput-nombre-user" class="label-error" id="error-imput-nombre-user"></label>
+        </div>
+        <div class="form-group">
+            <label for="imput-apellido-user" class="label-input">Apellido</label>
+            <input class="imput" id="imput-apellido-user" type="text" name="apellido" placeholder="Apellido" required>
+            <label for="imput-apellido-user" class="label-error" id="error-imput-apellido-user"></label>
+        </div>
+        <div class="form-group">
+            <label for="imput-clave-user" class="label-input">Contraseña</label>
+            <input class="imput" id="imput-clave-user" type="password" name="clave" placeholder="Contraseña" required>
+            <label for="imput-clave-user" class="label-error" id="error-imput-clave-user"></label>
+        </div>
+        <div class="form-group">
+            <label for="imput-email-user" class="label-input">Email</label>
+            <input class="imput" id="imput-email-user" type="email" name="email" placeholder="Email" required>
+            <label for="imput-email-user" class="label-error" id="error-imput-email-user"></label>
+        </div>
+        <div class="form-group">
+            <label for="tipo" class="label-input">Rol</label>
+            <select class="imput" id="tipo" name="tipo">
+                <option value="empleado">Empleado</option>
+                <option value="admin">Admin</option>
+            </select>
+            <label for="tipo" class="label-error" id="error-tipo"></label>
+        </div>
+        <div class="form-group">
+            <label for="estado" class="label-input">Estado</label>
+            <select class="imput" id="estado" name="estado">
+                <option value="activo">Activo</option>
+                <option value="desactivo">Desactivo</option>
+            </select>
+            <label for="estado" class="label-error" id="error-estado"></label>
+        </div>
+        <input class="boton-submit" type="submit">
+    </form>
+</div>
+
+
+<!-- ---------------------------- EDITAR USER -------------------------------- -->
+
+<div class="cont-form-contenido edit-user" id="cont-form-edit-user">
+    <form id="edit-user-form" class="form-contenido" method="POST">
+        <div class="cont-titulo-form">
+            <h3 class="titulo-form">Editar usuario</h3>
+            <i class='bx bx-x icono-cerrar' id="icono-cerrar"></i>
+        </div>
+        <div class="form-group">
+            <label for="edit-usuario" class="label-input">Usuario</label>
+            <input class="imput" type="text" name="usuario" id="edit-usuario" placeholder="Usuario" readonly>
+            <label for="edit-usuario" class="label-error" id="error-edit-usuario"></label>
+        </div>
+        <div class="form-group">
+            <label for="edit-nombre" class="label-input">Nombre</label>
+            <input class="imput" type="text" name="nombre" id="edit-nombre" placeholder="Nombre">
+            <label for="edit-nombre" class="label-error" id="error-edit-nombre"></label>
+        </div>
+        <div class="form-group">
+            <label for="edit-apellido" class="label-input">Apellido</label>
+            <input class="imput" type="text" name="apellido" id="edit-apellido" placeholder="Apellido">
+            <label for="edit-apellido" class="label-error" id="error-edit-apellido"></label>
+        </div>
+        <div class="form-group">
+            <label for="edit-email" class="label-input">Email</label>
+            <input class="imput" type="email" name="email" id="edit-email" placeholder="Email">
+            <label for="edit-email" class="label-error" id="error-edit-email"></label>
+        </div>
+        <div class="form-group">
+            <label for="edit-tipo" class="label-input">Rol</label>
+            <select class="imput" id="edit-tipo" name="tipo">
+                <option value="empleado">Empleado</option>
+                <option value="admin">Admin</option>
+            </select>
+            <label for="edit-tipo" class="label-error" id="error-edit-tipo"></label>
+        </div>
+        <div class="form-group">
+            <label for="edit-estado" class="label-input">Estado</label>
+            <select class="imput" id="edit-estado" name="estado">
+                <option value="activo">Activo</option>
+                <option value="desactivo">Desactivo</option>
+            </select>
+            <label for="edit-estado" class="label-error" id="error-edit-estado"></label>
+        </div>
+        <input class="boton-submit" type="submit" value="Guardar">
+    </form>
+</div>
+
+
+<style>
+    .estado{
+        background-color: grey;
+        padding: 1px 3px;
+        color: white;
+        width: fit-content;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+    .estado.desactivo{
+        background-color: red;
+    }
+    .estado.activo{
+        background-color: #28b463;
+    }
+
+
+    .select-filtros{
+        border-radius: 10px;
+    }
+    
+    .form-group{
+        display: flex;
+        flex-direction: column;
+    }
+    .form-group .label-input{
+        font-size: 12px;
+        font-weight: bold;
+    }
+    .form-group .label-error{
+        font-size: 12px;
+        color: red;
+
+    }
+
+
+    .cont-form-contenido{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: #111111bd;
+        z-index: 99;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .6s;
+        
+    }
+
+    .cont-form-contenido.activo{
+        opacity: 1;
+        pointer-events: unset;
+        transition: opacity .6s;
+    }
+
+    .form-contenido{
+        width: 350px;
+        height: auto;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+        transform: translateY(-100vh);
+        transition: transform .5s;
+        
+    }
+    .cont-form-contenido.activo .form-contenido{
+        transform: translateY(0);
+    }
+
+
+    .cont-titulo-form{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .titulo-form{
+        color: #3175da;
+        font-size: 18px;
+    }
+    .icono-cerrar{
+        cursor: pointer;
+        color: grey;
+        font-size: 30px;
+    }
+    .icono-cerrar:hover{
+        color: red;
+    }   
+
+    .cont-tipo{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0px 20px;
+        color: grey;
+        font-size: 14px;
+    }
+
+    .imput{
+        height: 35px;
+        border-radius: 10px;
+        border: 1px solid grey;
+        padding: 0 10px;
+        font-size: 12px;
+    }
+    .imput.error{
+        border: 1px solid red;
+  
+    }
+
+    .boton-submit{
+        height: 35px;
+        border-radius: 10px;
+        border: none;
+        background-color: #28b463;
+        color: white;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        cursor: pointer;
+        outline: none;
+    }
+
+    .boton-submit:hover{
+        opacity: .8;
+        scale: 1.02;
+    }
+
+
+</style>
+
+
+

@@ -1,0 +1,545 @@
+<div class="contenido">
+
+
+    <div class="titulo-contenido"><h4>Recepción</h4></div>
+
+
+
+    <form action="" class="form-recepcion" id="form-recepcion" method="POST">
+
+        <!-- ---------------------------- FORM HUESPED -------------------------------- -->
+
+        <div class="cont-datos-huespedes" id="cont-form-recepcion">
+
+            {% if data.tipo == 'doble' or data.tipo == 'triple'%}
+
+            <div  class="detalle-huesped resp" id="detalle-huesped-resp">
+                
+                <div class="cont-titulo-datos">
+                    <h4 class="titulo-datos">Datos del responsable</h4>
+                    <div class="cont-responsable">
+                        <label for="responsable">Responsable</label>
+                        <input id="responsable" type="radio" name="responsable" value="huesped-resp" required>    
+                    </div>
+                </div>
+                <div class="form-huesped resp" id="form-huesped-resp">
+                    <div class="cont-doble">
+                        <div class="form-group">
+                            <label for="imput-nombre-huesped">Nombre</label>
+                            <input class="imput" id="imput-nombre-huesped" type="text" name="nombre" placeholder="Nombre" required disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="imput-apellido-huesped">Apellido</label>
+                            <input class="imput" id="imput-apellido-huesped" type="text" name="apellido" placeholder="Apellido" required disabled>
+                        </div>    
+                    </div>
+                    <div class="cont-doble">
+                        <div class="form-group">
+                            <label for="imput-email-huesped">Email</label>
+                            <input class="imput" id="imput-email-huesped" type="email" name="email" placeholder="Email" disabled>
+                        </div>
+                        <div class="form-group">
+                            <label for="imput-telefono-huesped">Teléfono</label>
+                            <input class="imput" id="imput-telefono-huesped" type="text" name="telefono" placeholder="Teléfono" disabled>
+                        </div>
+                    </div>
+
+                    <div class="cont-doble">
+                        <div class="form-group">
+                            <label for="imput-pais-huesped">País</label>
+                            <input class="imput" id="imput-pais-huesped" type="" name="pais" placeholder="País" disabled>
+                        </div>    
+                        <div class="form-group">
+                            <label for="imput-tipo-doc-huesped">Tipo Documento</label>
+                            <select class="imput tipo-doc" id="imput-tipo-doc-huesped" name="tipo-doc" disabled>
+                                <option value="rut">Rut</option>
+                                <option value="id-card">ID Card</option>
+                                <option value="pasaporte">Pasaporte</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="imput-num-doc-huesped">N° de Documento</label>
+                            <input class="imput" id="imput-num-doc-huesped" type="text" name="num-doc" placeholder="N° de Documento" required disabled>
+                        </div>    
+                    </div>
+                </div>
+            </div>
+            {% endif%}
+
+            {% if data.tipo == 'simple' or data.tipo == 'doble' or data.tipo == 'triple'%}
+
+            <!-- ---------------------------- FORM HUESPED 1 -------------------------------- -->
+
+
+            <div class="detalle-huesped uno">
+
+                <div class="cont-titulo-datos" onclick="expandirHuesped('form-huesped-1')">
+                    <h4 class="titulo-datos">Datos del huesped 1</h4>
+                    <div class="cont-responsable">
+                        <label for="responsable-h1">Responsable</label>
+                        <input id="responsable-h1" type="radio" name="responsable" value="huesped-1" required checked>    
+                    </div>
+                    <i id="flecha-item-reservas" class='bx bxs-chevron-right flecha-item'></i>
+                </div>
+                <div class="form-huesped uno activo" id="form-huesped-1">
+                    <div class="cont-doble">
+                        <div class="form-group">
+                            <label for="imput-nombre-h1">Nombre</label>
+                            <input class="imput" id="imput-nombre-h1" type="text" name="nombre-h1" placeholder="Nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="imput-apellido-h1">Apellido</label>
+                            <input class="imput" id="imput-apellido-h1" type="text" name="apellido-h1" placeholder="Apellido" required>
+                        </div>    
+                    </div>
+                    <div class="cont-doble">
+                        <div class="form-group">
+                            <label for="imput-email-h1">Email</label>
+                            <input class="imput" id="imput-email-h1" type="email" name="email-h1" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="imput-telefono-h1">Teléfono</label>
+                            <input class="imput" id="imput-telefono-h1" type="text" name="telefono-h1" placeholder="Teléfono">
+                        </div>
+                    </div>
+
+                    <div class="cont-doble">
+                        <div class="form-group">
+                            <label for="imput-pais-h1">País</label>
+                            <input class="imput" id="imput-pais-h1" type="" name="pais-h1" placeholder="País">
+                        </div>    
+                        <div class="form-group">
+                            <label for="imput-tipo-doc-h1">Tipo Documento</label>
+                            <select class="imput tipo-doc" id="imput-tipo-doc-h1" name="tipo-doc-h1">
+                                <option value="rut">Rut</option>
+                                <option value="id-card">ID Card</option>
+                                <option value="pasaporte">Pasaporte</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="imput-num-doc-h1">N° de Documento</label>
+                            <input class="imput" id="imput-num-doc-h1" type="text" name="num-doc-h1" placeholder="N° de Documento" required>
+                        </div>    
+                    </div>
+                </div>
+            </div>
+            {% endif%}
+
+
+            {% if data.tipo == 'doble' or data.tipo == 'triple'%}
+
+            <!-- ---------------------------- FORM HUESPED 2 -------------------------------- -->
+
+            <div class="detalle-huesped tres">
+
+                <div class="cont-titulo-datos" onclick="expandirHuesped('form-huesped-2')">
+                    <h4 class="titulo-datos">Datos del huesped 2</h4>
+                    <div class="cont-responsable">
+                        <label for="responsable-h2">Responsable</label>
+                        <input id="responsable-h2" type="radio" name="responsable" value="huesped-2"  required>    
+                    </div>
+                    <i id="flecha-item-reservas" class='bx bxs-chevron-right flecha-item'></i>
+                </div>
+                <div class="form-huesped dos" id="form-huesped-2">
+                    <div class="cont-doble">
+                        <div class="form-group">
+                            <label for="imput-nombre-h2">Nombre</label>
+                            <input class="imput" id="imput-nombre-h2" type="text" name="nombre-h2" placeholder="Nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="imput-apellido-h2">Apellido</label>
+                            <input class="imput" id="imput-apellido-h2" type="text" name="apellido-h2" placeholder="Apellido" required>
+                        </div>    
+                    </div>
+                    <div class="cont-doble">
+                        <div class="form-group">
+                            <label for="imput-email-h2">Email</label>
+                            <input class="imput" id="imput-email-h2" type="email" name="email-h2" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="imput-telefono-h2">Teléfono</label>
+                            <input class="imput" id="imput-telefono-h2" type="text" name="telefono-h2" placeholder="Teléfono">
+                        </div>
+                    </div>
+
+                    <div class="cont-doble">
+                        <div class="form-group">
+                            <label for="imput-pais-h2">País</label>
+                            <input class="imput" id="imput-pais-h2" type="" name="pais-h2" placeholder="País">
+                        </div>    
+                        <div class="form-group">
+                            <label for="imput-tipo-doc-h2">Tipo Documento</label>
+                            <select class="imput tipo-doc" id="imput-tipo-doc-h2" name="tipo-doc-h2">
+                                <option value="rut">Rut</option>
+                                <option value="id-card">ID Card</option>
+                                <option value="pasaporte">Pasaporte</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="imput-num-doc-h2">N° de Documento</label>
+                            <input class="imput" id="imput-num-doc-h2" type="text" name="num-doc-h2" placeholder="N° de Documento" required>
+                        </div>    
+                    </div>
+                </div>
+            </div>
+
+            {% endif %}
+
+            {% if data.tipo == 'triple'%}
+
+            <!-- ---------------------------- FORM HUESPED 3 -------------------------------- -->
+
+            <div class="detalle-huesped cuatro">
+
+                <div class="cont-titulo-datos" onclick="expandirHuesped('form-huesped-3')">
+                    <h4 class="titulo-datos">Datos del huesped 3</h4>
+                    <div class="cont-responsable">
+                        <label for="responsable-h3">Responsable</label>
+                        <input id="responsable-h3" type="radio" name="responsable" value="huesped-3"  required>    
+                    </div>
+                    <i id="flecha-item-reservas" class='bx bxs-chevron-right flecha-item'></i>
+                </div>
+                <div class="form-huesped tres" id="form-huesped-3">
+                    <div class="cont-doble">
+                        <div class="form-group">
+                            <label for="imput-nombre-h3">Nombre</label>
+                            <input class="imput" id="imput-nombre-h3" type="text" name="nombre-h3" placeholder="Nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="imput-apellido-h3">Apellido</label>
+                            <input class="imput" id="imput-apellido-h3" type="text" name="apellido-h3" placeholder="Apellido" required>
+                        </div>    
+                    </div>
+                    <div class="cont-doble">
+                        <div class="form-group">
+                            <label for="imput-email-h3">Email</label>
+                            <input class="imput" id="imput-email-h3" type="email" name="email-h3" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <label for="imput-telefono-h3">Teléfono</label>
+                            <input class="imput" id="imput-telefono-h3" type="text" name="telefono-h3" placeholder="Teléfono">
+                        </div>
+                    </div>
+
+                    <div class="cont-doble">
+                        <div class="form-group">
+                            <label for="imput-pais-h3">País</label>
+                            <input class="imput" id="imput-pais-h3" type="" name="pais-h3" placeholder="País">
+                        </div>    
+                        <div class="form-group">
+                            <label for="imput-tipo-doc-h3">Tipo Documento</label>
+                            <select class="imput tipo-doc" id="imput-tipo-doc-h3" name="tipo-doc-h3" required>
+                                <option value="rut">Rut</option>
+                                <option value="id-card">ID Card</option>
+                                <option value="pasaporte">Pasaporte</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="imput-num-doc-h3">N° de Documento</label>
+                            <input class="imput" id="imput-num-doc-h3" type="text" name="num-doc-h3" placeholder="N° de Documento" required>
+                        </div>    
+                    </div>
+                </div>
+            </div>
+
+            {% endif %}
+        </div>
+
+        <div class="cont-datos-hab-res">
+
+            <!-- ---------------------------- DATOS HABITACION -------------------------------- -->
+
+
+            <div class="rec-datos-habitacion" id="rec-datos-habitacion" ID-hab= "{{data.ID}}" >
+                <h4 class="titulo-datos">Detalles de habitación</h4>
+                <table class="rec-datos-hab-tabla">
+                    <tr>
+                        <th>Numero</th>
+                        <td id="numero-habitacion">{{data.numero}}</td>
+                    </tr>
+                    <tr>
+                        <th>Tipo</th>
+                        <td id="tipo-habitacion">{{data.tipo}}</td>
+                    </tr>
+                    <tr>
+                        <th>Estado</th>
+                        <td id="estado-habitacion">{{data.estado}}</td>
+                    </tr>
+                    <tr>
+                        <th>Orientación</th>
+                        <td id="orientacion-habitacion">{{data.orientacion}}</td>
+                    </tr>
+                    <tr>
+                        <th>Precio</th>
+                        <td id="precio-habitacion">{{data.precio}}</td>
+                    </tr>
+                </table>
+            </div>
+    
+            <!-- ---------------------------- FORM RESERVA -------------------------------- -->
+    
+            <div class="cont-form-reserva " id="cont-form-reserva">
+
+                <div class="cont-titulo-datos">
+                    <h4 class="titulo-datos">Datos reserva</h4>
+
+                </div>
+
+                <div class="res-cont-form">
+
+                    <div class="cont-doble">
+                        <div class="form-group">
+                            <label for="imput-fecha-entrada">Fecha entrada</label>
+                            <input class="imput" id="imput-fecha-entrada" type="date" name="fecha-entrada" value="" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="imput-fecha-salida">Fecha salida</label>
+                            <input class="imput" id="imput-fecha-salida" type="date" name="fecha-salida" required>
+                        </div>    
+                    </div>
+                    <div class="cont-doble">
+                        <div class="form-group">
+                            <label for="imput-tipo-pago">Tipo de Pago</label>
+                            <select class="imput tipo-pago" id="imput-tipo-pago" name="tipo-pago">
+                                <option value="efectivo">Efectivo</option>
+                                <option value="tarjeta">Tarjeta</option>
+                            </select>
+                        </div>    
+                        <div class="form-group">
+                            <label for="imput-adelanto">Adelanto</label>
+                            <input class="imput" id="imput-adelanto" type="number" name="adelanto" placeholder="Adelanto" min="0" value="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="imput-total-pago">Total a pagar</label>
+                            <input class="imput" id="imput-total-pago" type="number" name="total-pago" placeholder="Total" min="0" value="{{data.precio}}" required>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="imput-observacion">Observación</label>
+                        <textarea class="textarea" id="imput-observacion" name="observacion"></textarea>
+                    </div>
+    
+                    <input class="boton-submit" type="submit" value="Reservar">
+                </div>
+    
+            </div>    
+            
+        </div>
+    </form>
+</div>
+
+<style>
+
+    .cont-responsable{
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    /*------------------------ EXPANSION HUESPEDES -------------------------------*/
+
+    .form-huesped{
+        height: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        overflow: hidden;
+    }
+    .form-huesped.activo{
+        height: fit-content;
+    }
+
+    .form-huesped.resp{
+        height: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        overflow: hidden;
+    }
+    .form-huesped.resp.activo{
+        height: fit-content;
+    }
+
+    /*------------------------ CONTENIDO-------------------------------------------*/
+
+    .contenido{
+        max-height: 100%;
+        height: 100%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    /* .contenido .titulo-contenido{
+        background-color: #1B2631;
+        color: white;
+        padding: 5px 20px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5); 
+    } */
+
+
+    .form-recepcion{
+        height: 100%;
+        overflow: auto;
+        /* display: flex; */
+        gap: 10px; 
+        padding: 10px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, auto));
+        /* grid-auto-flow: row; */
+    }
+
+    /* ---------- HUESPEDES -------------- */
+
+
+
+    .cont-datos-huespedes {
+        /* display: grid;
+        grid-auto-rows: auto; */
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: auto;
+        position: relative;
+        height: 100%;
+    }
+
+    .detalle-huesped {
+        width: 100%;
+        height: fit-content;
+        display: grid;
+        gap: 10px;
+        padding: 10px;
+        border-radius: 10px;
+        border: 1px solid grey; 
+        border-left: 6px solid #614BC3;
+    }
+
+    .cont-doble{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(0px, auto));
+        gap: 20px;
+    }
+
+
+     /* ---------- DATOS HABITACION -------------- */
+
+     .cont-datos-hab-res{
+        /* display: grid;
+        grid-template-rows: auto minmax(40px, 100%); */
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        height: 100%;
+    }
+
+    .rec-datos-habitacion{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        border: 1px solid grey;
+        border-left: 6px solid #614BC3;
+        border-radius: 10px;
+        padding: 5px;
+    }
+    .rec-datos-hab-tabla tr, .rec-datos-hab-tabla th, .rec-datos-hab-tabla td{
+        border: none;
+        padding: 5px;
+        font-size: 12px;
+    }
+
+    /* ---------- DATOS RESERVA -------------- */
+
+    .cont-form-reserva{
+        /* display: grid;
+        grid-template-rows: 30px 1fr; */
+        display: flex;
+        flex-direction: column;
+        border: 1px solid grey;
+        border-left: 6px solid #614BC3;
+        border-radius: 10px;
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .res-cont-form{
+        /* display: grid;
+        grid-template-rows: repeat(auto-fit, minmax(30px, 1fr)); */
+        gap: 10px;
+        display: flex;
+        flex-direction: column;
+
+    }
+
+/* --------------------------- TITULO ----------------------------- */
+
+    .cont-titulo-datos{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 12px;
+        cursor: pointer;
+    }
+    .titulo-datos{
+        color: #614BC3;
+        font-size: 12px;
+        font-weight: bold;
+
+    }
+
+    .imput{
+        height: 30px;
+        width: auto;
+        border-radius: 10px;
+        border: 1px solid grey;
+        padding: 0 10px;
+    }
+    .imput.error{
+        border: 1px solid red;
+    
+    }
+
+    .form-group{
+        display: flex;
+        flex-direction: column;
+    }
+    .form-group label{
+        font-size: 11px;
+        font-weight: bold;
+    }
+
+
+    .boton-submit{
+        min-height: 35px;
+        height: 35px;
+        width: 150px;
+        border-radius: 10px;
+        border: none;
+        background-color: #28b463;
+        color: white;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        cursor: pointer;
+        outline: none;
+        right: 0;
+        margin-left: auto;
+    }
+
+    .boton-submit:hover{
+        opacity: .8;
+        scale: 1.02;
+    }
+
+    .textarea{
+        width: 100%;
+        min-height: 30px;
+        resize: vertical;
+        max-height: 100px;
+    }
+
+
+</style>

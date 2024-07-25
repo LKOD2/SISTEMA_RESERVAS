@@ -1,0 +1,312 @@
+{% extends "pagina/base-pagina.html" %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+
+
+
+<!-- ---------------------login------------------------- -->
+
+<div id="login-conteiner"></div>
+
+<!-- ---------------------baner------------------------- -->
+
+    <div class="slide-baner">
+
+        <div class="cont-titulo-baner">
+            <p>Warriot</p>
+            <h1>Buenos Aires</h1>
+        </div>
+        <div class="arrow-baner flecha-iz-baner" id="flecha-iz-baner" >
+            <i class='bx bx-chevron-left' ></i>
+        </div>
+        <div class="arrow-baner flecha-de-baner" id="flecha-de-baner">
+            <i class='bx bx-chevron-right'></i>
+        </div>
+        
+        <div class="carrusel-baner" id="carrusel-baner">
+            <div class="img-baner" style="background-image: url(/PROJECT-HOTEL/images/baner-hotel.jpg);">
+                <div>1</div>
+            </div>
+            <div class="img-baner" style="background-image: url(/PROJECT-HOTEL/images/lobby-1.jpg);">
+                <div>2</div>
+            </div>
+            <div class="img-baner" style="background-image: url(/PROJECT-HOTEL/images/recepcion-hotel-lujo.jpg);">
+                <div>3</div>
+            </div>
+        </div>
+    </div>
+
+<!-- ---------------------navegacion 2------------------------- -->
+
+    <section class="navegacion-2">
+        <nav class="cont-nav">
+            <ul>
+                <li><a href="#hoteles">Hoteles</a></li>
+                <li><a href="#habitaciones">Habitaciones</a></li>
+                <li><a href="#precios">Precios</a></li>
+                <li><a href="#servicio">Servicios</a></li>
+            </ul>
+        </nav>
+    </section>
+
+<!-- ---------------------hoteles------------------------- -->
+
+    <section id="hoteles" class="hoteles">
+        <h1 class="titulo-body">hoteles</h1>
+
+        <div class="grid">
+            <div class="grid-img" style="background-image: url(/app/static/img/grid-hotel-4.jpg);">
+                <div class="cont-hot-texto">
+                    <h2>Buenos Aires</h2>
+                    <P></P>
+                    <button class="boton" type="button"> Ver Mas</button>
+                </div>
+            </div>
+                
+            <div class="grid-img" style="background-image: url(/app/static/img/grid-hotel-5.jpg);">
+                <div class="cont-hot-texto">
+                    <h2>Madrid</h2>
+                    <P></P>
+                    <button class="boton" type="button"> Ver Mas</button>
+                </div>
+            </div>
+            <div class="grid-img" style="background-image: url('');">
+                <div class="cont-hot-texto">
+                    <h2>Roma</h2>
+                    <P></P>
+                    <button class="boton" type="button">Ver Mas</button>
+                </div>
+            </div>
+    
+        </div>
+    </section>
+    
+<!-- ---------------------habitaciones------------------------- -->
+
+    <section id="habitaciones" class="habitaciones">
+
+        <h1 class="titulo-body">Habitaciones</h1>
+
+        <div class="cont-habitaciones">
+
+            <div class="hab hab-1">
+                <div class="slide">
+                    <div class="arrow flecha-iz" id="flecha-iz-1" >
+                        <i class='bx bx-chevron-left' ></i>
+                    </div>
+                    <div class="arrow flecha-de" id="flecha-de-1">
+                        <i class='bx bx-chevron-right'></i>
+                    </div>
+                    <div class="carrusel" id="carrusel-1">
+                        
+                        <div class="cont-img" id="s1-img-1" style="background-image: url(/PROJECT-HOTEL/images/habitacio-3.jpg);">
+                            <div></div>
+                        </div>
+                        <div class="cont-img" id="s1-img-2" style="background-image: url(/PROJECT-HOTEL/images/habitacion-doble.jpg);">
+                            <div></div>
+                        </div>
+                        <div class="cont-img" id="s1-img-3" style="background-image: url(/PROJECT-HOTEL/images/habitacion-suite.jpg);">
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cont-texto">
+                    <h2>Habitación simple</h2>
+                    <p>Nuestra habitación simple es un acogedor refugio para el viajero solitario que 
+                        busca comodidad y funcionalidad. Con una cama individual de lujo, un baño privado 
+                        elegante y todas las comodidades modernas, esta habitación ofrece un espacio íntimo y 
+                        tranquilo para relajarse después de explorar las maravillas de Buenos Aires.
+                    </p>
+                    <button class="boton" type="button">Reservar</button>
+                </div>
+            </div>
+
+            <div class="hab hab-2">
+                <div class="slide">
+                    <div class="arrow flecha-iz" id="flecha-iz-2" >
+                        <i class='bx bx-chevron-left' ></i>
+                    </div>
+                    <div class="arrow flecha-de" id="flecha-de-2">
+                        <i class='bx bx-chevron-right'></i>
+                    </div>
+                    <div class="carrusel" id="carrusel-2">
+                        
+                        <div class="cont-img" id="s1-img-1" style="background-image: url(/PROJECT-HOTEL/images/habitacio-3.jpg);">
+                            <div></div>
+                        </div>
+                        <div class="cont-img" id="s1-img-2" style="background-image: url(/PROJECT-HOTEL/images/habitacion-doble.jpg);">
+                            <div></div>
+                        </div>
+                        <div class="cont-img" id="s1-img-3" style="background-image: url(/PROJECT-HOTEL/images/habitacion-suite.jpg);">
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cont-texto">
+                    <h2>Habitación doble</h2>
+                    <p>
+                        Nuestra habitación doble es ideal para parejas o amigos que viajan juntos y desean 
+                        compartir una experiencia de alojamiento cómoda y elegante. Con dos camas individuales 
+                        o una cama queen-size, un baño privado amplio y bien equipado, y una decoración acogedora 
+                        y contemporánea, esta habitación ofrece el espacio perfecto para descansar.
+                    </p>
+                    <button class="boton" type="button">Reservar</button>
+                </div>
+            </div>
+
+            <div class="hab hab-3">
+                <div class="slide">
+                    <div class="arrow flecha-iz" id="flecha-iz-3" >
+                        <i class='bx bx-chevron-left' ></i>
+                    </div>
+                    <div class="arrow flecha-de" id="flecha-de-3">
+                        <i class='bx bx-chevron-right'></i>
+                    </div>
+                    <div class="carrusel" id="carrusel-3">
+                        
+                        <div class="cont-img" id="s1-img-1" style="background-image: url(/PROJECT-HOTEL/images/habitacio-3.jpg);">
+                            <div></div>
+                        </div>
+                        <div class="cont-img" id="s1-img-2" style="background-image: url(/PROJECT-HOTEL/images/habitacion-doble.jpg);">
+                            <div></div>
+                        </div>
+                        <div class="cont-img" id="s1-img-3" style="background-image: url(/PROJECT-HOTEL/images/habitacion-suite.jpg);">
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="cont-texto">
+                    <h2>Suite</h2>
+                    <p>
+                        Nuestra suite es el epítome del lujo y la sofisticación. Con un amplio dormitorio 
+                        con una lujosa cama king-size y un baño de mármol con 
+                        bañera de hidromasaje, ofreciendo un espacio generoso y refinado para los 
+                        huéspedes más exigentes. Disfrute de vistas panorámicas de la ciudad desde su 
+                        ventana y sumérjase en un oasis de confort y estilo en el corazón de Buenos Aires.
+                    </p>
+                    <button class="boton" type="button">Reservar</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- ---------------------precios------------------------- -->
+
+    <section id="precios" class="precios">
+
+        <h1 class="titulo-body">Precios</h1>
+        <div class="cont-precios">
+            <h2>Tarifas y Disponibilidad de Habitaciones</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tipo de Habitación</th>
+                        <th>Capacidad</th>
+                        <th>Precio por Noche</th>
+                        <th>Disponibilidad</th>
+                        <th>Servicios Incluidos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Habitación Individual</td>
+                        <td>1 persona</td>
+                        <td>$100</td>
+                        <td>Disponible</td>
+                        <td>Wi-Fi gratuito, Desayuno incluido</td>
+                    </tr>
+                    <tr>
+                        <td>Habitación Doble</td>
+                        <td>2 personas</td>
+                        <td>$150</td>
+                        <td>Disponible</td>
+                        <td>Wi-Fi gratuito, Desayuno incluido, Piscina</td>
+                    </tr>
+                    <tr>
+                        <td>Suite</td>
+                        <td>2 personas</td>
+                        <td>$200</td>
+                        <td>No Disponible</td>
+                        <td>Wi-Fi gratuito, Desayuno incluido, Spa, Gimnasio</td>
+                    </tr>
+                    <tr>
+                        <td>Familiar</td>
+                        <td>4 personas</td>
+                        <td>$250</td>
+                        <td>Disponible</td>
+                        <td>Wi-Fi gratuito, Desayuno incluido, Parque infantil</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        
+    </section>
+
+<!-- ---------------------servicios--------------------------->
+
+    <section id="servicio" class="servicio">
+        <h1 class="titulo-body">Servicios</h1>
+        
+        <div class="bloque">
+            <div class="bloque-img" style="background-image: url(/PROJECT-HOTEL/images/gym.jpg);">
+                <div class="cont-texto-bloque">
+                    <h2>gimnacio</h2>
+                    <P></P>
+                    <button class="boton" type="button"> Ver Mas</button>
+                </div>
+            </div>
+            <div class="bloque-img" style="background-image: url(/PROJECT-HOTEL/images/habitacion-2.jpg);">
+                <div class="cont-texto-bloque">
+                    <h2>Madrid</h2>
+                    <P></P>
+                    <button class="boton" type="button"> Ver Mas</button>
+                </div>
+            </div>
+            <div class="bloque-img" style="background-image: url(/PROJECT-HOTEL/images/servicios-bar.jpg);">
+                <div class="cont-texto-bloque">
+                    <h2>Bar</h2>
+                    <P></P>
+                    <button class="boton" type="button"> Ver Mas</button>
+                </div>
+            </div>
+            <div class="bloque-img" style="background-image: url(/PROJECT-HOTEL/images/servicios-vino.jpg);">
+                <div class="cont-texto-bloque">
+                    <h2>Comida</h2>
+                    <P></P>
+                    <button class="boton" type="button"> Ver Mas</button>
+                </div>
+            </div>
+            <div class="bloque-img" style="background-image: url(/PROJECT-HOTEL/images/servicios-picina.jpg);">
+                <div class="cont-texto-bloque">
+                    <h2>picina</h2>
+                    <P></P>
+                    <button class="boton" type="button"> Ver Mas</button>
+                </div>
+            </div>
+    
+        </div>
+    </section>
+
+<!-- ---------------------final--------------------------->
+
+    <section id="final" class="final">
+        <div class="cont-final">
+            <div class="cont-final-img" style="background-image: url(/PROJECT-HOTEL/images/Buenos-Aires_Arquitectura.jpg);"></div>
+            <div class="cont-final-texto">
+                <h2>Bienvenido a la ciudad de la furia</h2>
+                <p>Recorrer las calles de la ciudad de Buenos Aires en Argentina,
+                    muchas veces a través de sus adoquines, casas patrimoniales 
+                    y cafeterías, sin duda te transporta y te hace pensar que estás en cualquier rincón de la ciudad europea.
+                </p>
+                <button class="boton" type="button">Mas</button>
+           
+            </div>
+        </div>
+    </section>
+
+
+    {% endblock %}

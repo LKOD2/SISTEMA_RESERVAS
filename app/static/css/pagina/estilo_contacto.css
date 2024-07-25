@@ -1,0 +1,137 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5{font-family: 'cinzel';}
+
+.titulo-body{
+    margin-bottom: 30px;
+    font-size: 72px;
+    margin-left: 100px;
+}
+
+/*--------------------baner------------------------*/
+
+.baner{
+    display: flex;
+    background-size: cover;
+    background-position: center center;
+    color: white;
+    background-repeat: no-repeat;
+    height: 90vh;
+    width: 100%;
+    min-width: 350px;
+    margin-bottom: 30px;
+    justify-content:center;
+}
+
+.baner .cont-titulo-baner{
+    width: 100%;
+    align-self: flex-end;
+    padding-left: 50px;
+    margin-bottom: 50px;
+}
+
+.baner .cont-titulo-baner h1{
+    font-size: 88px;
+}
+
+.baner .cont-titulo-baner p{
+    font-size: 25px;
+}
+
+/*----------------------form-contacto----------------------*/
+
+.form-contacto{
+    display: flex;
+    flex-direction: column;
+    padding: 0px 100px;
+    width: 100%;
+    min-width: 350px;
+    margin-bottom: 30px;
+    font-family: 'poppins';
+}
+
+.form-contacto .form-group{
+    display: flex;
+    flex-direction: column;
+    width: auto;
+}
+
+.form-contacto label{
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.form-contacto .form-email{
+    height: 40px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.form-contacto textarea{
+    border-radius: 5px;
+    height: 200px;
+    margin-bottom: 10px;
+}
+
+.form-contacto .form-boton{
+    background-color: #a49264;
+    width: 150px;
+    height: 40px;
+    border-radius: 25px;
+    border: none;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.433);
+    transition: 0.5s;
+    align-items: center;
+}
+
+.form-contacto .form-boton:hover{
+    background-color: black;
+    color: white;
+}
+
+@media (max-width: 1024px){
+
+    /*----------------------baner--------------------*/
+    
+    .baner .cont-titulo-baner h1{
+        font-size: 56px;
+    }
+    .baner .cont-titulo-baner p{
+        font-size: 20px;
+    }
+
+}
+    
+@media (max-width: 620px){
+
+    /*----------------------baner--------------------*/
+
+    .baner .cont-titulo-baner{
+        padding-left: 0px;
+    }
+    
+    .baner .cont-titulo-baner h1{
+        font-size: 36px;
+        text-align: center;
+    }
+    .baner .cont-titulo-baner p{
+        font-size: 10px;
+        text-align: center;
+    }
+
+    /*----------------------form-contacto--------------------*/
+
+    .form-contacto{
+        padding: 0px 50px;
+        justify-content: center;
+    }
+
+    .form-contacto .cont-boton{
+        display: flex;
+        justify-content: center;
+    }
+}

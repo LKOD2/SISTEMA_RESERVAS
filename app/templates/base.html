@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Habitaciones</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/base.css')}}">
+
+
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+
+    <div class="gral">
+
+        <!-- ---------------------- header -------------------------- -->
+
+        <div class="header">
+            <div class="cont-busqueda">
+                <form action="#">
+                    <input type="search" placeholder="Buscar">
+                </form>
+            </div>
+
+            <div class="cont-user">
+            
+                <label for="menu-user" class="nombre-user">{{usuario}}</label>
+                <select name="menu-user" id="menu-user" class="menu-user">
+                    <option value="perfil" selected disabled id="btn-perfil">{{usuario}}</option>
+                    <option value="logout" id="btn-logout">Cerrar Sesión</option>
+                </select>
+
+                <div class="icono-user"><i class='bx bxs-user'></i></div>                 
+                
+            </div>
+
+        </div>
+
+        <!-- ---------------------- menu -------------------------- -->
+
+        <div class="menu">
+
+            <div class="contenido-menu">
+            
+                <div class="cont-logo">
+                    <img class="logo" src="{{ url_for('static', filename='img/LOGO-HOTEL-FINAL.png')}}" alt="" width="50px" height="50px">
+                    <h2 id="nombre-hotel">Hotel</h2>
+                </div>
+                <div class="cont-lista">
+                    <ul>
+                        <li class="menu-item" id="menu-item-inicio">
+                            <div class="item" id="item-inicio">
+                                <i class='bx bx-home-alt-2'></i>
+                                <p>Inicio</p>
+                            </div>
+                            
+                        </li>
+                        <li class="menu-item desplegable" id="menu-item-gestion">
+                            <div class="item" id="item-gestion">
+                                <i class='bx bxs-bookmark-alt-plus'></i>
+                                <p>Gestion</p>
+                                <i id="flecha-item-reservas" class='bx bxs-chevron-right flecha-item'></i>
+                            </div>
+                            <ul class="submenu submenu-reservas" id="submenu-reservas">
+                                <li class="submenu-item" id="item-recepcion">
+                                    <p>Recepción</p>
+                                </li>
+                                <li class="submenu-item" id="item-salida">
+                                    <p>Salida</p>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- se escondio ventas para futura implementacion -->
+                        <li class="menu-item desplegable" id="menu-item-ventas" style="display: none;">
+                            <div class="item" id="item-ventas">
+                                <i class='bx bxs-cart'></i>
+                                <p>Ventas</p>
+                                <i id="flecha-item-ventas" class='bx bxs-chevron-right flecha-item'></i>
+                            </div>
+
+                            <ul class="submenu submenu-ventas" id="submenu-ventas">
+                                <li class="submenu-item" id="item-vender">
+                                    <p>Vender</p>
+                                </li>
+                                <li class="submenu-item" id="item-productos">
+                                    <p>Productos</p>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="menu-item" id="menu-item-reservas" style="display: none;">
+                            <div class="item" id="item-reservas">
+                                <i class='bx bx-hard-hat'></i>
+                                <p>Reservas</p>
+                            </div>
+                        </li>
+                        <li class="menu-item" id="menu-item-habitaciones">
+                            <div class="item" id="item-habitaciones">
+                                <i class='bx bxs-hotel' ></i>
+                                <p>Habitaciones</p>
+                            </div>
+                        </li>
+                        <li class="menu-item" id="menu-item-pagos" style="display: none;">
+                            <div class="item" id="item-pagos">
+                                <i class='bx bx-money-withdraw'></i>
+                                <p>Pagos</p>
+                                <i id="flecha-item" class='bx bxs-chevron-right flecha-item'></i>
+                            </div>
+                        </li>
+                        <li class="menu-item" id="menu-item-huespedes">
+                            <div class="item" id="item-huespedes">
+                                <i class='bx bx-briefcase-alt'></i>
+                                <p>Huespedes</p>
+                            </div>
+                        </li>
+                        <li class="menu-item" id="menu-item-usuarios">
+                            <div class="item" id="item-usuarios">
+                                <i class='bx bx-group'></i>
+                                <p>Usuarios</p>
+                                
+                            </div>
+                        </li>
+                        <li class="menu-item desplegable" id="menu-item-config">
+                            <div class="item" id="item-config">
+                                <i class='bx bx-cog'></i>
+                                <p>Configuración</p>
+                                <i id="flecha-item-config" class='bx bxs-chevron-right flecha-item'></i>
+                            </div>
+
+                            <ul class="submenu submenu-ventas" id="submenu-ventas">
+                                <li class="submenu-item" id="item-hoteles">
+                                    <p>Hoteles</p>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <div class="cont-flecha-menu-cerrar">
+                    <i id="boton-menu-cerrar" class='bx bxs-chevron-left'></i>
+                </div>
+                
+            </div>
+
+            <div class="cont-flecha-menu-abrir" id="boton-menu-abrir">
+                <i class='bx bxs-chevron-right'></i>
+            </div>
+        </div>
+
+        <!-- --------------------------- main ----------------------------- -->
+
+        <div class="main" id="main">
+
+          <!-- aca va mi contenido -->
+            
+        </div>
+
+        <!-- ----------------------- disponibles -------------------------- -->
+
+        <div class="dis">
+
+            <div class="cont-flecha-dis-abrir" id="boton-dis-abrir">
+                <i class='bx bxs-chevron-left'></i>
+            </div>
+
+            <div class="contenido-dis">
+                <div class="titulo-dis"><h4>Disponibles</h4></div>
+
+                <div class="cont-disponibles" id="cont-disponibles">
+                    disponibles
+                </div>
+                
+                <div class="cont-flecha-dis-cerrar">
+                    <i id="boton-dis-cerrar" class='bx bxs-chevron-right'></i>
+                </div> 
+
+            </div> 
+        </div>  
+        
+    </div>
+
+    <script src="{{ url_for('static', filename='/js/base.js')}}"></script>
+    <script src="{{ url_for('static', filename='/js/usuarios.js')}}"></script>
+    <script src="{{ url_for('static', filename='/js/huespedes.js')}}"></script>
+    <script src="{{ url_for('static', filename='/js/habitaciones.js')}}"></script>
+    <script src="{{ url_for('static', filename='/js/inicio.js')}}"></script>
+    <script src="{{ url_for('static', filename='/js/productos.js')}}"></script>
+    <script src="{{ url_for('static', filename='/js/recepcion.js')}}"></script>
+    <script src="{{ url_for('static', filename='/js/salida.js')}}"></script>
+    <script src="{{ url_for('static', filename='/js/reservas.js')}}"></script>
+    <script src="{{ url_for('static', filename='/js/hoteles.js')}}"></script>
+
+
+
+</body>
+</html>

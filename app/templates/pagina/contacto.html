@@ -1,0 +1,45 @@
+{% extends "pagina/base-pagina.html" %}
+
+{% block title %}Contactanos{% endblock %}
+
+{% block content %}
+
+<!-- ---------------------login------------------------- -->
+
+    <div id="login-conteiner"></div>
+
+<!-- ---------------------header------------------------- -->
+
+    <div id="header-conteiner"></div>
+    
+    
+
+    <div class="baner" style="background-image: url(/PROJECT-HOTEL/images/recepcion-hotel-lujo.jpg);">
+        <div class="cont-titulo-baner">
+            <p>¿Como podemos ayudarte?</p>
+            <h1>Contactanos</h1>
+            
+        </div>
+        
+    </div>
+
+    <form id="formulario" class="form-contacto" >
+        <div class="form-group">
+            <label for="email-cont">Email</label>
+            <input class="form-email" type="email" id="email-cont" name="email" value="" required placeholder="nombre@mail.com">
+        </div>
+        <div class="form-group">
+            <label for="tarea">Envíanos un mensaje</label>
+            <textarea id="tarea" name="mensaje" cols="30" rows="10" required placeholder="Mensaje"></textarea>
+        </div>
+        <div class="cont-boton">
+            <input class="form-boton" type="submit" value="Enviar">
+        </div>
+    </form>
+
+    
+    <!-- ---------------------footer--------------------------->
+
+    <div id="footer-conteiner"></div>
+
+    {% endblock %}

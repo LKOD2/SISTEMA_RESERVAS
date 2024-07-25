@@ -1,0 +1,34 @@
+
+<div class="contenido">
+
+    <div class="titulo-contenido"><h4>{{titulo}}</h4></div>
+
+    <div class="data-habitaciones" id="habitaciones-container">
+        {% for habitacion in data %}
+        <div class="habitacion {{habitacion.estado}}" ID-hab = "{{habitacion.ID}}">
+            <div class="cont-numero-tipo">
+                <div>
+                    <div class="numero">{{habitacion.numero}}</div>
+                    <div class="tipo">{{habitacion.tipo}}</div>
+                </div>
+                <div class="icono">
+                    {% if habitacion.estado == 'disponible'%}
+                    <i class='bx bxs-bed'></i>
+                    {% elif habitacion.estado == 'ocupada'%}
+                    <i class='bx bxs-error' ></i>
+                    {% elif habitacion.estado == 'limpieza'%}
+                    <i class='bx bxs-trash'></i>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="estado">
+                <p>{{habitacion.estado}}</p>
+                <i class='bx bxs-chevron-right'></i>
+            </div>
+            
+        </div>
+        {% endfor %}
+    </div>
+
+</div>

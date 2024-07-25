@@ -1,0 +1,312 @@
+<div class="contenido">
+
+    <div class="titulo-contenido"><h4>Salida</h4></div>
+
+    <div class="sal-data">
+
+        <!-- ---------------------------- DATOS HUESPED RESPONSABLE -------------------------------- -->
+        <div class="sal-cont-datos">
+        
+            <div class="sal-datos-huesped">
+                <div class="sal-cont-titulo-form">
+                    <h4 class="titulo-form">Datos del huésped responsable</h4>
+                </div>
+                <table>
+                    <tr>
+                        <th>Nombre</th>
+                        <td id="nombre-responsable">{{data.datos_huesped.nombre}}</td>
+                    </tr>
+                    <tr>
+                        <th>Apellido</th>
+                        <td id="apellido-responsable">{{data.datos_huesped.apellido}}</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td id="email-responsable">{{data.datos_huesped.email}}</td>
+                    </tr>
+                    <tr>
+                        <th>Teléfono</th>
+                        <td id="telefono-responsable">{{data.datos_huesped.telefono}}</td>
+                    </tr>
+                    <tr>
+                        <th>Pais</th>
+                        <td id="telefono-responsable">{{data.datos_huesped.pais}}</td>
+                    </tr>
+                    <tr>
+                        <th>Tipo de documento</th>
+                        <td id="telefono-responsable">{{data.datos_huesped.tipo_documento}}</td>
+                    </tr>
+                    <tr>
+                        <th>N documento</th>
+                        <td id="telefono-responsable">{{data.datos_huesped.num_documento}}</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- ---------------------------- DATOS HABITACION -------------------------------- -->
+
+            <div class="sal-datos-habitacion">
+                <div class="cont-titulo-form">
+                    <h4 class="titulo-form">Detalles habitación</h4>
+                </div>
+                <table>
+                    <tr>
+                        <th>Numero</th>
+                        <td id="numero-habitacion">{{data.datos_habitacion.numero}}</td>
+                    </tr>
+                    <tr>
+                        <th>Tipo</th>
+                        <td id="tipo-habitacion">{{data.datos_habitacion.tipo}}</td>
+                    </tr>
+                    <tr>
+                        <th>Estado</th>
+                        <td id="estado-habitacion">{{data.datos_habitacion.estado}}</td>
+                    </tr>
+                    <tr>
+                        <th>Orientación</th>
+                        <td id="orientacion-habitacion">{{data.datos_habitacion.orientacion}}</td>
+                    </tr>
+                    <tr>
+                        <th>Precio</th>
+                        <td id="precio-habitacion">{{data.datos_habitacion.precio}}</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- ---------------------------- DATOS RESERVA -------------------------------- -->
+
+            <div class="sal-datos-reserva" id="sal-cont-datos-reserva">
+
+                <div class="cont-titulo-form">
+                    <h4 class="titulo-form" >Datos de la reserva</h4>
+                </div>
+
+                <table>
+                    <tr>
+                        <th>Fecha entrada</th>
+                        <td id="fecha-entrada">{{data.datos_reserva.fecha_entrada}}</td>
+                    </tr>
+                    <tr>
+                        <th>Fecha salida</th>
+                        <td id="fecha-salida">{{data.datos_reserva.fecha_salida}}</td>
+                    </tr>
+                    <tr>
+                        <th>Observación</th>
+                        <td id="observacion-reserva">{{data.datos_reserva.observacion}}</td>
+                    </tr>
+                </table>
+            </div>
+        
+        </div> 
+
+        <form class="sal-form-salida" id="formulario-salida" method="POST">
+            <input type="hidden" name="reserva_id" value="{{data.datos_reserva.ID}}">
+            <!-- ---------------------------- RESUMEN DE PAGOS -------------------------------- -->
+
+            <div class="sal-datos-pagos">
+                <h4 class="titulo-form">Resumen de pagos</h4>
+                <div class="sal-cont-inputs">
+                    <div class="form-group">
+                        <label for="costo-habitacion">Costo Habitación</label>
+                        <input class="imput" id="costo-habitacion" type="text" name="costo-habitacion" value="{{data.datos_habitacion.precio}}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="adelanto">Adelanto</label>
+                        <input class="imput" id="adelanto" type="number" name="adelanto" value="{{data.datos_pago.adelanto}}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="restante-pago">Restante por pagar</label>
+                        <input class="imput" id="restante-pago" type="number" name="restante-pago" value="{{data.datos_pago.restante_pago}}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="multa-pago">Multa</label>
+                        <input class="imput" id="multa-pago" type="number" name="multa-pago" >
+                    </div>
+
+                </div>
+            </div>
+            <div class="cont-doble-boton">
+                <div class="form-group-total">
+                    <label for="total-pago">Total a pagar</label>
+                    <input class="imput" id="total-pago" type="number" name="total-pago" value="{{data.total_pago}}" readonly>
+                </div>
+                <input class="boton-submit" type="submit" value="Finalizar">
+            </div>
+
+    
+    
+
+        </form>
+
+    </div>
+
+</div>
+
+<style>
+/*------------------------ CONTENIDO-------------------------------------------*/
+
+.contenido {
+    max-height: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* .contenido .titulo-contenido {
+    background-color: #1B2631;
+    color: white;
+    padding: 5px 20px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+} */
+
+.sal-data{
+    padding: 10px;
+    display: grid;
+    gap: 10px;
+}
+
+.sal-cont-datos{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 10px;
+}
+
+
+
+.sal-datos-pagos{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    border: 1px solid grey;
+    gap: 10px;
+}
+.sal-cont-inputs{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    width: 100%;
+    gap: 10px;
+}
+
+.sal-datos-huesped, .sal-datos-habitacion, .sal-datos-reserva {
+    width: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+    border: 1px solid grey;
+    border-bottom: 5px solid #614BC3;
+}
+
+/* ---------- total a pagar --------------- */
+
+.sal-form-salida{
+    display: grid;
+    gap: 10px;
+}
+.cont-doble-boton{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    gap: 10px;
+    
+}
+.form-group-total{
+    display: flex;
+    justify-content: right;
+    margin-left: auto;
+    background-color: rgb(168, 168, 168);
+    font-size: 12px;
+    border-radius: 10px;
+    align-items: center;
+    gap: 10px;
+    padding-left: 10px;
+}
+
+
+
+
+/* .cont-doble {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+    gap: 20px;
+} */
+
+.res-cont-form {
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.cont-titulo-form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.titulo-form {
+    color: #614BC3;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.imput {
+    height: 30px;
+    width: auto;
+    border-radius: 10px;
+    border: 1px solid grey;
+    padding: 0 10px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.boton-submit{
+        min-height: 30px;
+        height: 30px;
+        width: 150px;
+        border-radius: 10px;
+        border: none;
+        background-color: #28b463;
+        color: white;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        cursor: pointer;
+        outline: none;
+        right: 0;
+        /* margin-left: auto; */
+    }
+
+    .boton-submit:hover{
+        opacity: .8;
+        scale: 1.02;
+    }
+
+
+.sal-datos-huesped table, .sal-datos-habitacion table, .sal-datos-reserva table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+}
+
+.sal-datos-huesped th, .sal-datos-habitacion th, .sal-datos-reserva th,
+.sal-datos-huesped td, .sal-datos-habitacion td, .sal-datos-reserva td {
+    border: none;
+    padding: 5px;
+    text-align: left;
+}
+</style>

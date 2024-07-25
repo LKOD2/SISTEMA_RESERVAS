@@ -1,0 +1,280 @@
+<div class="contenido">
+
+
+    <div class="titulo-contenido"><h4>Huespedes</h4></div>
+
+    <div class="cont-agregar">
+        <button class="boton-crear" id="boton-crear-huesped">Crear nuevo</button>
+        <select name="select-huespedes" id="select-huespedes" class="select-filtros">
+            <option value="activo">Activos</option>
+            <option value="inactivo">Inactivos</option>
+            <option value="todos">Todos</option>
+        </select>
+        <input class="buscador-contenido" type="search" placeholder="Buscar">
+    </div>
+
+    <div class="data" id="contenido-huespedes">
+
+        <table>
+            <thead class="head-tabla-huesped">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Email</th>
+                    <th>Pais</th>
+                    <th>Telefono</th>
+                    <th>Tipo documento</th>
+                    <th>N° de documento</th>
+                    <th>Estado</th>
+                    <th>N Habitación</th>
+                    <!-- <th>Acciones</th> -->
+                </tr>
+            </thead>
+            <tbody class="body-tabla-huesped" id="body-tabla-huesped">
+
+                {% for huesped in data %}
+                <tr>
+                    <td>{{huesped.nombre}}</td>
+                    <td>{{huesped.apellido}}</td>
+                    <td>{{huesped.email}}</td>
+                    <td>{{huesped.pais}}</td>
+                    <td>{{huesped.telefono}}</td>
+                    <td>{{huesped.tipo_documento}}</td>
+                    <td>{{huesped.num_documento}}</td>
+                    <td><div class="estado {{huesped.estado}}">{{huesped.estado}}</div></td>
+                    <td>{{huesped.numero_hab}}</td>
+                    <!-- <td>
+                        <button class="acciones editar huesped" id="boton-editar" data-huesped="{{ huesped.id }}" type="button"><i class='bx bxs-edit-alt'></i></button>
+                        <button class="acciones borrar huesped" id="boton-borrar" data-huesped="{{ huesped.id }}" type="button"><i class='bx bx-x'></i></button>
+                    </td> -->
+                </tr>
+                {% endfor %}
+                
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <div class="barra-inferior">
+        <p id="cant-reg-huespedes"> {{ data|length }} Registros </p>
+        <div class="cont-num-pagina">
+            <i class='bx bxs-chevron-left'></i>
+            <p>1</p>
+            <i class='bx bxs-chevron-right' ></i>
+        </div>
+    </div>
+
+</div>
+
+<!-- ---------------------------- FORM ENVIO -------------------------------- -->
+
+<div class="cont-form-contenido crear-huesped" id="cont-form-crear-huesped">
+    <form id="crear-huesped-form" action="" class="form-contenido" method="POST">
+        <div class="cont-titulo-form">
+            <h3 class="titulo-form">Crear huesped</h3>
+            <i class='bx bx-x icono-cerrar' id="icono-cerrar"></i>
+        </div>
+        <div class="form-group">
+            <label for="imput-nombre-huesped">Nombre</label>
+            <input class="imput" id="imput-nombre-huesped" type="text" name="nombre" placeholder="Nombre" required>
+        </div>
+        <div class="form-group">
+            <label for="imput-apellido-huesped">Apellido</label>
+            <input class="imput" id="imput-apellido-huesped" type="text" name="apellido" placeholder="Apellido" required>
+        </div>
+        <div class="form-group">
+            <label for="imput-email-huesped">Email</label>
+            <input class="imput" id="imput-email-huesped" type="email" name="email" placeholder="Email" required>
+        </div>
+        <div class="form-group">
+            <label for="imput-pais-huesped">País</label>
+            <input class="imput" id="imput-pais-huesped" type="text" name="pais" placeholder="País" required>
+        </div>
+        <div class="form-group">
+            <label for="imput-telefono-huesped">Teléfono</label>
+            <input class="imput" id="imput-telefono-huesped" type="text" name="telefono" placeholder="Teléfono" required>
+        </div>
+        <div class="form-group">
+            <label for="imput-tipo-doc-huesped">Tipo de Documento</label>
+            <select class="imput" id="imput-tipo-doc-huesped" name="tipo-doc">
+                <option value="rut">Rut</option>
+                <option value="id-card">ID Card</option>
+                <option value="pasaporte">Pasaporte</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="imput-num-doc-huesped">N° de Documento</label>
+            <input class="imput" id="imput-num-doc-huesped" type="text" name="num-doc" placeholder="N° de Documento" required>
+        </div>
+        <input class="boton-submit" type="submit">
+    </form>
+</div>
+
+
+<!-- ---------------------------- FORM EDICION -------------------------------- -->
+
+
+<div class="cont-form-contenido edit-huesped" id="cont-form-edit-huesped">
+    <form id="edit-huesped-form" class="form-contenido" method="POST">
+        <div class="cont-titulo-form">
+            <h3 class="titulo-form">Editar usuario</h3>
+            <i class='bx bx-x icono-cerrar' id="icono-cerrar"></i>
+        </div>
+        <input type="hidden" id="edit-id-huesped" name="id">
+        <input class="imput" id="edit-nombre-huesped" type="text" name="nombre" placeholder="Nombre" required>
+        <input class="imput" id="edit-apellido-huesped" type="text" name="apellido" placeholder="Apellido" required>
+        <input class="imput" id="edit-email-huesped" type="email" name="email" placeholder="Email" required>
+        <input class="imput" id="edit-pais-huesped" type="text" name="pais" placeholder="Pais" required>
+        <input class="imput" id="edit-telefono-huesped" type="text" name="telefono" placeholder="Telefono" required>
+        <select class="imput" id="edit-tipo-doc-huesped" name="tipo-doc">
+            <option value="rut">Rut</option>
+            <option value="id-card">Id card</option>
+            <option value="pasaporte">Pasaporte</option>
+        </select>
+        <input class="imput" id="edit-num-doc-huesped" type="text" name="num_doc" placeholder="N° de Documento" required>
+        <input class="boton-submit" type="submit">
+    </form>
+</div>
+
+<style>
+    .estado{
+        background-color: grey;
+        padding: 1px 3px;
+        color: white;
+        width: fit-content;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+    .estado.inactivo{
+        background-color: orange;
+    }
+    .estado.desactivo{
+        background-color: red;
+    }
+    .estado.activo{
+        background-color: #28b463;
+    }
+
+
+    .select-filtros{
+        border-radius: 10px;
+    }
+
+
+
+
+
+    .form-group{
+        display: flex;
+        flex-direction: column;
+    }
+    .form-group label{
+        font-size: 11px;
+        font-weight: bold;
+    }
+
+    .cont-form-contenido{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: #111111bd;
+        z-index: 99;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .6s;
+        
+    }
+
+    .cont-form-contenido.activo{
+        opacity: 1;
+        pointer-events: unset;
+        transition: opacity .6s;
+    }
+
+    .form-contenido{
+        width: 350px;
+        height: auto;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+        transform: translateY(-100vh);
+        transition: transform .5s;
+        
+    }
+    .cont-form-contenido.activo .form-contenido{
+        transform: translateY(0);
+    }
+
+
+    .cont-titulo-form{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .titulo-form{
+        color: #3175da;
+        font-size: 18px;
+
+    }
+    .icono-cerrar{
+        cursor: pointer;
+        color: grey;
+        font-size: 30px;
+    }
+    .icono-cerrar:hover{
+        color: red;
+    }   
+
+    .cont-tipo{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0px 20px;
+        color: grey;
+        font-size: 14px;
+    }
+
+    .imput{
+        height: 35px;
+        border-radius: 10px;
+        border: 1px solid grey;
+        padding: 0 10px;
+    }
+    .imput.error{
+        border: 1px solid red;
+  
+    }
+
+    .boton-submit{
+        height: 35px;
+        border-radius: 10px;
+        border: none;
+        background-color: #28b463;
+        color: white;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        cursor: pointer;
+        outline: none;
+    }
+
+    .boton-submit:hover{
+        opacity: .8;
+        scale: 1.02;
+    }
+
+
+</style>
+
+<script>
+
+
+</script>

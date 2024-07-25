@@ -1,0 +1,72 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'poppins';
+}
+
+
+.gral-login-trab{
+    width: 100%;
+    min-width: 50%;
+    height: 100vh;
+    max-height: 100vh;
+    display: flex;
+}
+
+
+.gral-login-trab .cont-img-login{
+    width:65%;
+    overflow: hidden;
+}
+.gral-login-trab .cont-img-login img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gral-login-trab .form-login-trab{
+    width: 35%;
+    min-width: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    padding: 50px;
+}
+.gral-login-trab .titulo-login-trab{
+    text-align: center;
+}
+.gral-login-trab .cont-entrada{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+.gral-login-trab .label{
+    font-size: 12px;
+}
+.gral-login-trab .entrada{
+    height: 35px;
+    border-radius: 10px;
+    border: 1px solid grey;
+    padding: 0 10px;
+}
+.gral-login-trab .entrada.error{
+    border: 1px solid red;
+}
+.gral-login-trab .error-usuario{
+    color: red;
+}
+.gral-login-trab .error-clave{
+    color: red;
+}
+
+.gral-login-trab .boton-login{
+    height: 35px;
+    border-radius: 10px;
+    border: none;
+    background-color: #28b463;
+    color: white;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    outline: none;
+}

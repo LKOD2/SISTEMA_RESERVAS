@@ -1,0 +1,283 @@
+<div class="contenido" id="usuarios">
+
+
+    <div class="titulo-contenido"><h4>Reservas</h4></div>
+
+    <div class="cont-agregar">
+        <button class="boton-crear" id="boton-crear-habitacion">Crear nuevo</button>
+        <select name="estdo_reservas" id="">
+            <option value="">Todas</option>
+            <option value="">Finalizadas</option>
+            <option value="">Activas</option>
+            <option value="">No iniciadas</option>
+        </select>
+        <input class="buscador-contenido" type="text" placeholder="Buscar">
+    </div>
+
+    <div class="data" id="contenido-habitaciones">
+
+        <table>
+            <thead class="head-tabla-habitacion">
+                <tr>
+                    <th>Numero</th>
+                    <th>Nombre huesped</th>
+                    <th>Apellido huesped</th>
+                    <th>N habitación</th>
+                    <th>Fecha de entrada</th>
+                    <th>Fecha de salida</th>
+                    <th>Huespedes</th>
+                    <th>Tipo de pago</th>
+                    <th>Pago total</th>
+                    <th>Estado</th> 
+                    <th>Acciones</th>                  
+                </tr>
+            </thead>
+            <tbody class="body-tabla-habitacion" id="body-tabla-habitacion">
+
+                {%for habitacion in data%}
+                <tr>
+                    <td>{{habitacion.numero}}</td>
+                    <td>{{habitacion.tipo}}</td>
+                    <td>{{habitacion.estado}}</td>
+                    <td>{{habitacion.orientacion}}</td>
+                    <td>{{habitacion.precio}}</td>
+                    
+                    <td>
+                        <button class="acciones editar hab" id="boton-editar" data-habitacion="{{ habitacion.numero }}" type="button"><i class='bx bxs-edit-alt'></i></button>
+                        <button class="acciones borrar hab" id="boton-borrar" data-habitacion="{{ habitacion.numero }}" type="button"><i class='bx bx-x'></i></button>
+                    </td>
+                </tr>
+                {% endfor %}
+                
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <div class="barra-inferior">
+        <p> 2 registros de 10</p>
+        <div class="cont-num-pagina">
+            <i class='bx bxs-chevron-left'></i>
+            <p>3</p>
+            <i class='bx bxs-chevron-right' ></i>
+        </div>
+    </div>
+
+</div>
+
+<!-- ---------------------------- FORM CREAR -------------------------------- -->
+
+<div class="cont-form-contenido crear-habitacion" id="cont-form-crear-habitacion">
+    <form id="crear-habitacion-form" action="" class="form-contenido" method="POST">
+        <div class="cont-titulo-form">
+            <h3 class="titulo-form">Crear habitación</h3>
+            <i class='bx bx-x icono-cerrar' id="icono-cerrar"></i>
+        </div>
+        <div class="form-group">
+            <label for="crear-numero-habitacion" class="label-input">Numero</label>
+            <input class="imput" id="crear-numero-habitacion" type="number" name="numero" placeholder="Número" min="1" required>
+            <label for="crear-numero-habitacion" class="label-error" id="error-crear-numero-hab"></label>
+        </div>
+        <div class="form-group">
+            <label for="crear-tipo-habitacion" class="label-input">Tipo</label>
+            <select class="imput opcion" id="crear-tipo-habitacion" name="tipo">
+                <option value="simple">Simple</option>
+                <option value="doble">Doble</option>
+                <option value="triple">Triple</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="crear-estado-habitacion" class="label-input">Estado</label>
+            <select class="imput opcion" id="crear-estado-habitacion" name="estado">
+                <option value="disponible">Disponible</option>
+                <option value="limpieza">Limpieza</option>
+                <option value="ocupada">Ocupada</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="crear-orientacion" class="label-input">Orientación</label>
+            <select class="imput opcion" id="crear-orientacion-habitacion" name="orientacion">
+                <option value="norte">Norte</option>
+                <option value="sur">Sur</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="crear-precio-habitacion" class="label-input">Precio</label>
+            <input class="imput" id="crear-precio-habitacion" type="number" name="precio" placeholder="Precio" value="20000" min="1" required>
+            <label for="crear-precio-habitacion" class="label-error" id="error-crear-precio-hab"></label>
+
+        </div>
+        <input class="boton-submit" type="submit">
+    </form>
+</div>
+
+
+<!-- ---------------------------- FORM EDICION -------------------------------- -->
+
+
+<div class="cont-form-contenido edit-habitacion" id="cont-form-edit-habitacion">
+    <form id="edit-habitacion-form" action="" class="form-contenido" method="POST">
+        <div class="cont-titulo-form">
+            <h3 class="titulo-form" id="titulo-form-edit">Editar habitación</h3>
+            <i class='bx bx-x icono-cerrar' id="icono-cerrar"></i>
+        </div>
+        <div class="form-group">
+            <label for="edit-numero-habitacion" class="label-input">Numero</label>
+            <input class="imput" id="edit-numero-habitacion" type="number" name="numero" placeholder="Numero" min="1" required readonly>
+            <label for="edit-numero-habitacion" class="label-error" id="error-edit-numero-hab"></label>
+        </div>
+        <div class="form-group">
+            <label for="edit-tipo-habitacion" class="label-input">Tipo</label>
+            <select class="imput opcion" id="edit-tipo-habitacion" name="tipo">
+                <option value="simple">Simple</option>
+                <option value="doble">Doble</option>
+                <option value="triple">Triple</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="edit-estado-habitacion" class="label-input">Estado</label>
+            <select class="imput opcion" id="edit-estado-habitacion" name="estado">
+                <option value="disponible">Disponible</option>
+                <option value="limpieza">Limpieza</option>
+                <option value="ocupada">Ocupada</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="edit-orientacion" class="label-input">Orientación</label>
+            <select class="imput opcion" id="edit-orientacion-habitacion" name="orientacion">
+                <option value="norte">Norte</option>
+                <option value="sur">Sur</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="edit-precio-habitacion" class="label-input">Precio</label>
+            <input class="imput" id="edit-precio-habitacion" type="number" name="precio" placeholder="Precio" min="1" required>
+            <label for="edit-precio-habitacion" class="label-error" id="error-edit-precio-hab"></label>
+
+        </div>
+        <input class="boton-submit" type="submit">
+    </form>
+</div>
+
+
+
+
+<style>
+
+    .form-group{
+        display: flex;
+        flex-direction: column;
+    }
+    .form-group .label-input{
+        font-size: 12px;
+        font-weight: bold;
+    }
+    .form-group .label-error{
+        font-size: 12px;
+        color: red;
+
+    }
+
+    .cont-form-contenido{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: #111111bd;
+        z-index: 99;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .6s;
+        
+    }
+
+    .cont-form-contenido.activo{
+        /* display: flex; */
+        opacity: 1;
+        pointer-events: unset;
+        transition: opacity .6s;
+    }
+
+    .form-contenido{
+        width: 350px;
+        height: auto;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+        transform: translateY(-100vh);
+        transition: transform .5s;
+        
+    }
+    .cont-form-contenido.activo .form-contenido{
+        transform: translateY(0);
+    }
+
+
+    .cont-titulo-form{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 16px;
+    }
+    .titulo-form{
+        color: #3175da;
+    }
+    .icono-cerrar{
+        cursor: pointer;
+        color: grey;
+        font-size: 30px;
+    }
+    .icono-cerrar:hover{
+        color: red;
+    }   
+
+    .cont-tipo{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0px 20px;
+        color: grey;
+        font-size: 14px;
+    }
+
+    .imput{
+        height: 35px;
+        border-radius: 10px;
+        border: 1px solid grey;
+        padding: 0 10px;
+    }
+    .imput.error{
+        border: 1px solid red;
+  
+    }
+    .opcion{
+        cursor: pointer;
+    }
+
+    .boton-submit{
+        height: 35px;
+        border-radius: 10px;
+        border: none;
+        background-color: #28b463;
+        color: white;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        cursor: pointer;
+        outline: none;
+    }
+
+    .boton-submit:hover{
+        opacity: .8;
+        scale: 1.02;
+    }
+
+
+</style>

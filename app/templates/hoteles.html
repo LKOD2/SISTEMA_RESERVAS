@@ -1,0 +1,236 @@
+<div class="contenido">
+
+
+    <div class="titulo-contenido"><h4>Hoteles</h4></div>
+
+    <div class="cont-agregar">
+        <button class="boton-crear" id="boton-crear-hotel">Crear nuevo</button>
+        <input class="buscador-contenido" type="text" placeholder="Buscar">
+    </div>
+
+    <div class="data" id="contenido-hoteles">
+
+        <table>
+            <thead class="head-tabla-hotel">
+                <tr>
+                    <th>nombre</th>
+                    <th>direccion</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="body-tabla-hotel" id="body-tabla-hotel">
+
+                {%for hotel in data%}
+                <tr>
+                    <td>{{hotel.nombre}}</td>
+                    <td>{{hotel.direccion}}</td>
+                    <td>{{hotel.estado}}</td>
+                    
+                    <td>
+                        <button class="acciones editar hotel" id="boton-editar" data-hotel="{{ hotel.ID }}" type="button"><i class='bx bxs-edit-alt'></i></button>
+                        <button class="acciones borrar hotel" id="boton-borrar" data-hotel="{{ hotel.ID }}" type="button"><i class='bx bx-x'></i></button>
+                        <button class="acciones seleccionar hotel" id="boton-seleccionar" data-hotel="{{ hotel.ID }}" data-nombre="{{ hotel.nombre }}" type="button"><i class='bx bx-check'></i></button>
+                    </td>
+                </tr>
+                {% endfor %}
+                
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <div class="barra-inferior">
+        <p id="cant-reg-hoteles"> {{ data|length }} Registros</p>
+        <div class="cont-num-pagina">
+            <i class='bx bxs-chevron-left'></i>
+            <p>3</p>
+            <i class='bx bxs-chevron-right' ></i>
+        </div>
+    </div>
+
+</div>
+
+<!-- ---------------------------- CREAR HOTEL -------------------------------- -->
+
+<div class="cont-form-contenido crear-hotel" id="cont-form-crear-hotel">
+    <form id="crear-hotel-form" action="" class="form-contenido" method="POST">
+        <div class="cont-titulo-form">
+            <h3 class="titulo-form">Crear hotel</h3>
+            <i class='bx bx-x icono-cerrar' id="icono-cerrar"></i>
+        </div>
+        <div class="form-group">
+            <label for="crear-nombre-hotel" class="label-input">nombre</label>
+            <input class="imput" id="crear-nombre-hotel" type="text" name="nombre" placeholder="Nombre" min="1" required>
+            <label for="crear-nombre-hotel" class="label-error" id="error-crear-nombre-hotel"></label>
+        </div>
+        <div class="form-group">
+            <label for="crear-direccion-hotel" class="label-input">Dirección</label>
+            <input class="imput" id="crear-direccion-hotel" type="text" name="direccion" placeholder="Dirección" required>
+            <label for="crear-direccion-hotel" class="label-error" id="error-crear-direccion-hotel"></label>
+        </div>
+        <div class="form-group">
+            <label for="crear-estado-hotel" class="label-input">Estado</label>
+            <select class="imput opcion" id="crear-estado-hotel" name="estado">
+                <option value="activo">Activo</option>
+                <option value="desactivo">Desactivo</option>
+            </select>
+        </div>
+
+        <input class="boton-submit" type="submit">
+    </form>
+</div>
+
+
+<!-- ---------------------------- EDITAR HOTEL -------------------------------- -->
+
+
+<div class="cont-form-contenido edit-hotel" id="cont-form-edit-hotel">
+    <form id="edit-hotel-form" action="" class="form-contenido" method="POST">
+        <div class="cont-titulo-form">
+            <h3 class="titulo-form" id="titulo-form-edit">Editar hotel</h3>
+            <i class='bx bx-x icono-cerrar' id="icono-cerrar"></i>
+        </div>
+        <div class="form-group">
+            <label for="edit-nombre-hotel" class="label-input">Nombre</label>
+            <input class="imput" id="edit-nombre-hotel" type="text" name="nombre" placeholder="Nombre" min="1" required>
+            <label for="edit-nombre-hotel" class="label-error" id="error-edit-nombre-hotel"></label>
+        </div>
+        <div class="form-group">
+            <label for="edit-direccion-hotel" class="label-input">Dirección</label>
+            <input class="imput" id="edit-direccion-hotel" type="text" name="direccion" placeholder="Dirección" required>
+            <label for="edit-direccion-hotel" class="label-error" id="error-edit-direccion-hotel"></label>
+        </div>
+        <div class="form-group">
+            <label for="edit-estado-hotel" class="label-input">Estado</label>
+            <select class="imput opcion" id="edit-estado-hotel" name="estado">
+                <option value="activo">Activo</option>
+                <option value="desactivo">Desactivo</option>
+            </select>
+        </div>
+        <input class="boton-submit" type="submit">
+    </form>
+</div>
+
+
+
+
+<style>
+
+    .form-group{
+        display: flex;
+        flex-direction: column;
+    }
+    .form-group .label-input{
+        font-size: 12px;
+        font-weight: bold;
+    }
+    .form-group .label-error{
+        font-size: 12px;
+        color: red;
+
+    }
+
+    .cont-form-contenido{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: #111111bd;
+        z-index: 99;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .6s;
+        
+    }
+
+    .cont-form-contenido.activo{
+        /* display: flex; */
+        opacity: 1;
+        pointer-events: unset;
+        transition: opacity .6s;
+    }
+
+    .form-contenido{
+        width: 350px;
+        height: auto;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+        transform: translateY(-100vh);
+        transition: transform .5s;
+        
+    }
+    .cont-form-contenido.activo .form-contenido{
+        transform: translateY(0);
+    }
+
+
+    .cont-titulo-form{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 16px;
+    }
+    .titulo-form{
+        color: #3175da;
+    }
+    .icono-cerrar{
+        cursor: pointer;
+        color: grey;
+        font-size: 30px;
+    }
+    .icono-cerrar:hover{
+        color: red;
+    }   
+
+    .cont-direccion{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0px 20px;
+        color: grey;
+        font-size: 14px;
+    }
+
+    .imput{
+        height: 35px;
+        border-radius: 10px;
+        border: 1px solid grey;
+        padding: 0 10px;
+    }
+    .imput.error{
+        border: 1px solid red;
+  
+    }
+    .opcion{
+        cursor: pointer;
+    }
+
+    .boton-submit{
+        height: 35px;
+        border-radius: 10px;
+        border: none;
+        background-color: #28b463;
+        color: white;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        cursor: pointer;
+        outline: none;
+    }
+
+    .boton-submit:hover{
+        opacity: .8;
+        scale: 1.02;
+    }
+
+
+</style>

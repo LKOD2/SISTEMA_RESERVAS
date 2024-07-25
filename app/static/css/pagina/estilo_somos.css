@@ -1,0 +1,319 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    
+}
+
+h1, h2, h3, h4, h5{font-family: 'cinzel';}
+
+.titulo-body{
+    margin-bottom: 30px;
+    font-size: 72px;
+    margin-left: 100px;
+}
+
+
+
+/*--------------------body------------------------*/
+
+.baner{
+    display: flex;
+    background-size: cover;
+    background-position: center center;
+    color: white;
+    background-repeat: no-repeat;
+    height: 90vh;
+    width: 100%;
+    min-width: 350px;
+    justify-content: center;
+}
+
+.baner .cont-titulo-baner{
+    width: 100%;
+    align-self: flex-end;
+}
+
+.baner .cont-titulo-baner h1{
+    font-size: 88px;
+    margin-left: 100px;
+    margin-bottom: 50px;
+}
+.baner .cont-titulo-baner p{
+    font-size: 25px;
+}
+
+/*----------------------navegacion 2----------------------*/
+
+.navegacion-2{
+    margin-bottom: 100px;
+}
+.cont-nav{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 60px;
+    min-width: 350px;
+    padding: 0 100px;
+    overflow: hidden;
+    
+}
+.navegacion-2 ul{
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font: normal 20px Cinzel, sans-serif;
+    
+}
+.navegacion-2 ul li{
+    margin-right: 15px;
+    border-right: 2px solid #a49264;
+    padding-right: 15px;
+}
+
+.navegacion-2 a{
+    text-decoration: none;
+    color: black;
+    transition: 0.5s;
+}
+
+.navegacion-2 a:hover{
+    color: #a49264;
+    font-weight: bold;
+}
+
+/*----------------------valores----------------------*/
+
+.valores{
+    margin-bottom: 50px;
+}
+
+.valores .cont-valores{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    min-width: 350px;
+    padding: 0px 100px;
+     
+}
+.valores h2{
+    border-bottom: 3px solid #a49264;
+    margin-bottom: 20px;
+}
+
+.valores .cont-g{
+    
+    flex: 1;
+    text-align: center;
+    padding: 20px;
+}
+
+.valores .cont-g p{
+    text-align: justify;
+}
+
+/*----------------------historia----------------------*/
+.historia{
+    width: 100%;
+    margin-bottom: 100px;
+}
+
+.cont-historia{
+    display: flex;
+    min-width: 350px;
+    min-height: 70vh;
+    margin: 0px 100px;
+    margin-bottom: 30px;
+}
+
+.cont-historia .cont-img{
+    flex: 1.2;
+    min-height: 40vh;
+    background-position: center;
+    background-size: cover;
+
+}
+.cont-historia .cont-texto{
+    flex: 1;
+    padding: 30px 50px;
+    text-align: justify;
+}
+.cont-historia h2{
+    margin-bottom: 20px;
+    font-size: 52px;
+    text-align: left;
+}
+
+/*----------------------vision----------------------*/
+
+#vision{
+    width: 100%;
+}
+
+.cont-vision{
+    display: flex;
+    background-color: rgb(10, 10, 10);
+    
+    min-width: 350px;
+    color: white;
+    min-height: 70vh;
+    margin: 0px 100px;
+}
+
+.cont-vision .cont-img{
+    flex: 1.2;
+    min-height: 40vh;
+    background-position: center;
+    background-size: cover;
+
+}
+.cont-vision .cont-texto{
+    flex: 1;
+    padding: 30px 50px;
+    text-align: justify;
+}
+.cont-vision h2{
+    margin-bottom: 20px;
+    font-size: 52px;
+    text-align: left;
+}
+
+
+@media (max-width: 1024px){
+
+    .titulo-body{
+        margin-bottom: 30px;
+        font-size: 52px;
+        margin-left: 50px;
+    }
+
+    /*----------------------baner--------------------*/
+
+    .baner .cont-titulo-baner h1{
+        font-size: 62px;
+        margin-left: 30px;
+        margin-bottom: 50px;
+    }
+
+    /*----------------------navegacion 2--------------------*/
+    .navegacion-2{
+        margin-bottom: 50px;
+    }
+
+    .navegacion-2 ul{
+        padding: 0 50px;
+    }
+
+
+    /*----------------------valores--------------------*/
+
+
+    .valores .cont-valores{
+        padding: 0px 50px;
+    }
+
+    /*----------------------historia vision--------------------*/
+
+    .historia .cont-historia{
+        flex-direction: column;
+        margin: 0px 50px;
+    }
+
+    .historia h2{
+        text-align: center;
+    }
+
+    .vision .cont-vision{
+        flex-direction: column;
+        margin: 0px 50px;
+    }
+
+    .vision h2{
+        text-align: center;
+        font-size: 42px;
+    }
+    .historia h2{
+        text-align: center;
+        font-size: 42px;
+    }
+
+}
+        
+@media (max-width: 620px){
+
+    .titulo-body{
+        margin-bottom: 30px;
+        font-size: 32px;
+        margin-left: 50px;
+    }
+
+
+
+    /*----------------------baner--------------------*/
+
+    .baner .cont-titulo-baner{
+        padding-left: 0px;
+    }
+    
+    .baner .cont-titulo-baner h1{
+        font-size: 36px;
+        text-align: center;
+    }
+    .baner .cont-titulo-baner p{
+        font-size: 10px;
+        text-align: center;
+    }
+
+    /*----------------------navegacion 2--------------------*/
+
+
+    .navegacion-2 .cont-nav{
+        justify-content: center;
+        width: 100%;
+    }
+
+    .navegacion-2 ul{
+        flex-direction: column;
+    }
+
+    .navegacion-2 ul li{
+        margin: 0;
+        margin-bottom: 10px;
+        border-right: none;
+        border-bottom: 2px solid #a49264;
+    }
+
+    /*----------------------valores--------------------*/
+    
+    .valores .cont-valores{
+        flex-direction: column;
+        padding: 0px 50px;
+    }
+
+    .valores .cont-g{
+        padding: 20px 0px;
+    }
+    /*----------------------historia vision--------------------*/
+
+    .historia .cont-historia{
+        width: 100%;
+        margin: 0;
+    }
+
+    .vision .cont-vision{
+        flex-direction: column-reverse;
+        width: 100%;
+        margin: 0;
+    }
+    
+    .vision h2{
+        font-size: 22px;
+    }
+
+    .historia h2{
+        font-size: 22px;
+    }
+
+}

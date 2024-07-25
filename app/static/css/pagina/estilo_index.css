@@ -1,0 +1,547 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    
+    
+}
+
+h1, h2, h3, h4, h5{font-family: 'cinzel';}
+
+.titulo-body{
+    min-width: 350px;
+    font-size: 72px;
+    margin: 0 100px;
+    margin-bottom: 50px;
+    border-bottom: 3px solid #a49264;
+}
+
+.boton{
+    background-color: #a49264;
+    width: 150px;
+    height: 40px;
+    border-radius: 25px;
+    border: none;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.433);
+    transition: 0.5;
+}
+
+.boton:hover{
+    background-color: #191617;
+    color: #a49264;
+}
+
+
+/*--------------------baner------------------------*/
+
+.slide-baner{
+    
+    align-items: center;
+    position: relative;
+    height: 90vh;
+    width: 100%;
+    min-width: 350px;
+    margin-bottom: 30px;
+    overflow: hidden;
+    
+}
+
+
+.carrusel-baner{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    transition: all 1s;
+    width: 300%;
+    height: 100%;
+
+}
+
+.img-baner{
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* .carrusel-baner .img-baner{
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: 100%;
+
+} */
+
+.arrow-baner{
+    position: absolute;
+    z-index: 3;
+    color: white;
+    font-size: 80px;
+    cursor: pointer;
+    top: 40%;
+}
+
+.flecha-de-baner{
+    right: 0; 
+}
+
+.cont-titulo-baner{
+    position: absolute;
+    width: 100%;
+    padding-left: 50px;
+    margin-bottom: 50px;
+    z-index: 2;
+    color: white;
+    bottom: 30px;
+
+}
+
+.cont-titulo-baner h1{
+    font-size: 88px;
+}
+.cont-titulo-baner p{
+    font-size: 25px;
+}
+
+/*----------------------navegacion 2----------------------*/
+
+.navegacion-2{
+    margin-bottom: 100px;
+}
+.cont-nav{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 60px;
+    min-width: 350px;
+    padding: 0 100px;
+    overflow: hidden;
+    
+}
+.navegacion-2 ul{
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font: normal 20px Cinzel, sans-serif;
+    
+}
+.navegacion-2 ul li{
+    margin-right: 15px;
+    border-right: 2px solid #a49264;
+    padding-right: 15px;
+}
+
+.navegacion-2 a{
+    text-decoration: none;
+    color: black;
+    transition: 0.5s;
+}
+
+.navegacion-2 a:hover{
+    color: #a49264;
+    font-weight: bold;
+}
+
+
+/*---------------------hoteles--------------------*/
+.grid{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 20px;
+    width: 100%;
+    min-height: 500px;
+    min-width: 350px;
+    padding: 0px 100px;
+    margin-bottom: 100px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Columnas con un ancho mínimo de 200px */
+    grid-auto-rows: auto; /* Altura automática para las filas */
+    grid-auto-flow: row; /* Los elementos se acomodan automáticamente en la siguiente fila */
+    grid-gap: 15px; /* Espacio entre los elementos */
+    
+}
+
+.grid .grid-img{
+
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 500px;  
+    border-radius: 15px;
+    position: relative;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.433);
+    overflow: hidden;
+    
+}
+
+.hoteles .cont-hot-texto{
+    background-color: rgba(0, 0, 0, 0.433);
+    backdrop-filter: blur(2px);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    min-height: 100px;
+    color: white;
+    padding: 20px;
+    
+}
+
+/*-------------------habitaciones---------------------*/
+
+.cont-habitaciones{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    width: 100%;
+    min-width: 350px;
+    padding: 0 100px;
+    margin-bottom: 100px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Columnas con un ancho mínimo de 200px */
+    grid-auto-rows: auto; /* Altura automática para las filas */
+    grid-auto-flow: row; /* Los elementos se acomodan automáticamente en la siguiente fila */
+    grid-gap: 20px; /* Espacio entre los elementos */
+}
+
+.habitaciones .hab{
+    min-height: 500px;
+    border-radius: 15px;
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.4);
+}
+
+.slide{
+    position: relative;
+    width: 100%;
+}
+
+.carrusel{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    height: 100%;
+    width: 300%;
+    transition: all 1s;
+}
+
+.habitaciones .cont-img{
+    display: flex;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;;
+    width: 100%;
+
+}
+
+.slide .arrow{
+    position: absolute;
+    z-index: 2;
+    color: white;
+    font-size: 80px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    cursor: pointer;
+}
+
+.slide .flecha-de{
+    right: 0;
+}
+
+.habitaciones .cont-texto{
+    text-align: center;
+    background-color: whitesmoke;
+    padding: 20px 30px;
+}
+
+.habitaciones p{
+    min-height: 50px;
+    text-align: justify;
+    padding: 0 10px;
+}
+.habitaciones h2{
+    border-bottom: 2px solid #a49264;
+    margin-bottom: 12px;
+}
+@media(max-width: 1200px){
+    .habitaciones .hab-3{
+        grid-template-rows: 1fr 1fr;
+        grid-column-start: 1;
+        grid-column-end: 3;
+        min-height: 600px;
+    }
+} 
+@media(max-width: 1025px){
+    .habitaciones .hab-3{
+        grid-column-start: 1;
+        grid-column-end: 1;
+
+    }
+}
+
+/*-------------------precios---------------------*/
+
+.precios{
+    min-width: 350px;
+    margin-bottom: 100px;
+}
+
+.precios .cont-precios{
+    width: 100%;
+    padding: 0 100px;
+    overflow: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/*-------------------servicios---------------------*/
+
+.servicio{
+    background-color: #151515;
+    min-width: 350px;
+    padding: 30px 0px;
+}
+
+.servicio .titulo-body{
+    color: white;
+}
+
+.servicio .bloque{
+    display: grid;
+    gap: 20px;
+    min-height: 600px;
+    width: 100%;
+    padding: 30px 100px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Columnas con un ancho mínimo de 200px */
+    grid-auto-rows: auto; /* Altura automática para las filas */
+    grid-auto-flow: row; /* Los elementos se acomodan automáticamente en la siguiente fila */
+    grid-gap: 15px; /* Espacio entre los elementos */ 
+}
+
+.servicio .bloque-img-1{
+    background-position: center center;
+    background-size: cover; 
+    border-radius: 5px;
+    min-height: 400px;
+    position: relative;
+}
+
+.servicio .bloque-img{
+    border-radius: 5px;
+    background-position: center center;
+    background-size: cover;
+    min-height: 400px;
+    position: relative;
+    overflow: hidden;
+}
+
+.servicio .cont-texto-bloque{
+
+    width: 100%;
+    min-height: 100px;
+    position: absolute;
+    bottom: 0;
+    padding: 30px;
+    color: white;  
+}
+
+/*-------------------final---------------------*/
+
+.cont-final{
+    
+    width: 100%;
+    min-width: 350px;
+    min-height: 80vh;
+    display: flex;
+}
+
+.cont-final-img{
+    background-color: rgb(193, 116, 15);
+    width: 50%;
+    min-height: 100%;
+    
+    background-position: center;
+    background-size: cover;
+}
+
+.cont-final-texto{
+    background-color: whitesmoke;
+    min-height: 100%;
+    width: 50%;
+    padding: 30px  100px;
+    overflow: auto;
+}
+.cont-final-texto h2{
+    font-family: 'cinzel';
+    font-size: 54px;
+    font-weight: 400;
+    margin-bottom: 30px;
+}
+
+.cont-final-texto p{
+    text-align: justify;
+    margin-bottom: 30px;
+}
+.cont-final-texto h2,
+.cont-final-texto p {
+    word-wrap: break-word;
+}
+
+
+@media (max-width: 1024px){
+
+    .titulo-body{
+        font-size: 52px;
+        margin: 0 50px;
+        margin-bottom: 30px;
+    }
+
+    /*----------------------baner--------------------*/
+    
+    .cont-titulo-baner h1{
+        font-size: 56px;
+    }
+    .cont-titulo-baner p{
+        font-size: 20px;
+    }
+
+    /*----------------------navegacion 2--------------------*/
+
+    .navegacion-2{
+        margin-bottom: 50px;
+    }
+    .navegacion-2 .cont-nav{
+        padding: 0 50px;
+    }
+
+    /*----------------------hoteles----------------------------*/
+
+    .grid{
+        padding: 0 50px;
+    }
+
+    /*----------------------habitaciones-----------------------*/
+
+    .habitaciones .cont-habitaciones{
+        padding: 0 50px;
+        grid-template-columns: auto;
+    }
+
+    /*----------------------servicios--------------------------*/
+    
+    .servicio .bloque{
+        padding: 0 50px;
+    }
+
+    /*----------------------final------------------------------*/
+
+    .cont-final{
+        width: 100%;
+        min-height: auto;
+        flex-direction: column;
+    }
+    
+    .cont-final-img{
+        width: 100%;
+        height: 400px;   
+    }
+    
+    .cont-final-texto{
+        height: 30%;
+        width: 100%;
+        padding: 30px 50px;
+    }
+    .cont-final-texto h2{
+        font-size: 36px;
+        margin-bottom: 30px;
+    }
+
+}
+    
+@media (max-width: 620px){
+
+    .titulo-body{
+        font-size: 42px;
+        margin: 0 ;
+        padding: 0 20px;
+        margin-bottom: 30px;
+    }
+
+    /*----------------------baner--------------------*/
+
+    .cont-titulo-baner{
+        padding-left: 0px;
+    }
+    
+    .cont-titulo-baner h1{
+        font-size: 36px;
+        text-align: center;
+    }
+    .cont-titulo-baner p{
+        font-size: 10px;
+        text-align: center;
+    }
+
+    /*----------------------navegacion 2--------------------*/
+
+    .navegacion-2 .cont-nav{
+        justify-content: center;
+        width: 100%;
+    }
+
+    .navegacion-2 ul{
+        flex-direction: column;
+    }
+
+    .navegacion-2 ul li{
+        margin: 0;
+        margin-bottom: 10px;
+        border-right: none;
+        border-bottom: 2px solid #a49264;
+    }
+
+    /*--------------------------hoteles----------------------*/
+    
+    .grid{
+        padding: 0;
+    }
+
+    /*-------------------habitaciones----------------------*/
+
+    .habitaciones .cont-habitaciones{
+        padding: 0;
+        width: 100%;
+        grid-gap: 20px;
+    }
+
+    /*-------------------servicios---------------------*/
+
+    .servicio .bloque{
+        padding: 0;
+        grid-column: 1fr;
+    }
+
+}

@@ -1,0 +1,219 @@
+<div class="contenido" id="usuarios">
+
+
+    <div class="titulo-contenido"><h4>Productos</h4></div>
+
+    <div class="cont-agregar">
+        <button class="boton-crear" id="boton-crear-producto">Crear nuevo</button>
+        <input class="buscador-contenido" type="text" placeholder="Buscar">
+    </div>
+
+    <div class="data" id="contenido-productos">
+
+        <table>
+            <thead class="head-tabla-producto">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Marca</th>
+                    <th>Detalle</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody class="body-tabla-producto" id="body-tabla-producto">
+
+                {%for producto in data%}
+                <tr>
+                    <td>{{producto.nombre}}</td>
+                    <td>{{producto.marca}}</td>
+                    <td>{{producto.detalle}}</td>
+                    <td>{{producto.precio}}</td>
+                    <td>{{producto.cantidad}}</td>
+                    
+                    <td>
+                        <button class="acciones editar producto" id="boton-editar" data-producto="{{ producto.id }}" type="button"><i class='bx bxs-edit-alt'></i></button>
+                        <button class="acciones borrar producto" id="boton-borrar" data-producto="{{ producto.id }}" type="button"><i class='bx bx-x'></i></button>
+                    </td>
+                </tr>
+                {% endfor %}
+                
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <div class="barra-inferior">
+        <p> 2 registros de 10</p>
+        <div class="cont-num-pagina">
+            <i class='bx bxs-chevron-left'></i>
+            <p>3</p>
+            <i class='bx bxs-chevron-right' ></i>
+        </div>
+    </div>
+
+</div>
+
+<!-- ---------------------------- FORM ENVIO -------------------------------- -->
+
+<div class="cont-form-contenido crear-producto" id="cont-form-crear-producto">
+    <form id="crear-producto-form" action="" class="form-contenido" method="POST">
+        <div class="cont-titulo-form">
+            <h3 class="titulo-form">Crear producto</h3>
+            <i class='bx bx-x icono-cerrar' id="icono-cerrar"></i>
+        </div>
+        <div class="form-group">
+            <label for="imput-nombre-producto">Nombre</label>
+            <input class="imput" id="imput-nombre-producto" type="text" name="nombre" placeholder="Nombre" required>
+        </div>
+        <div class="form-group">
+            <label for="imput-marca-producto">marca</label>
+            <input class="imput" id="imput-marca-producto" type="text" name="marca" placeholder="marca" required>
+        </div>
+        <div class="form-group">
+            <label for="imput-detalle-producto">detalle</label>
+            <input class="imput" id="imput-detalle-producto" type="detalle" name="detalle" placeholder="detalle" required>
+        </div>
+        <div class="form-group">
+            <label for="imput-precio-producto">Precio</label>
+            <input class="imput" id="imput-precio-producto" type="text" name="precio" placeholder="Precio" required>
+        </div>
+        <div class="form-group">
+            <label for="imput-cantidad-producto">Cantidad</label>
+            <input class="imput" id="imput-cantidad-producto" type="text" name="cantidad" placeholder="Cantidad" required>
+        </div>
+        <input class="boton-submit" type="submit">
+    </form>
+</div>
+
+
+<!-- ---------------------------- FORM EDICION -------------------------------- -->
+
+
+<div class="cont-form-contenido edit-producto" id="cont-form-edit-producto">
+    <form id="edit-producto-form" class="form-contenido" method="POST">
+        <div class="cont-titulo-form">
+            <h3 class="titulo-form">Editar usuario</h3>
+            <i class='bx bx-x icono-cerrar' id="icono-cerrar"></i>
+        </div>
+        <input type="hidden" id="edit-id-producto" name="id">
+        <input class="imput" id="edit-nombre-producto" type="text" name="nombre" placeholder="Nombre" required>
+        <input class="imput" id="edit-marca-producto" type="text" name="marca" placeholder="marca" required>
+        <input class="imput" id="edit-detalle-producto" type="detalle" name="detalle" placeholder="detalle" required>
+        <input class="imput" id="edit-precio-producto" type="text" name="precio" placeholder="precio" required>
+        <input class="imput" id="edit-cantidad-producto" type="text" name="cantidad" placeholder="cantidad" required>
+        <input class="boton-submit" type="submit">
+    </form>
+</div>
+
+<style>
+
+    .form-group{
+        display: flex;
+        flex-direction: column;
+    }
+    .form-group label{
+        font-size: 11px;
+        font-weight: bold;
+    }
+
+.cont-form-contenido{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: #111111bd;
+        z-index: 99;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .6s;
+        
+    }
+
+    .cont-form-contenido.activo{
+        /* display: flex; */
+        opacity: 1;
+        pointer-events: unset;
+        transition: opacity .6s;
+    }
+
+    .form-contenido{
+        width: 350px;
+        height: auto;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+        transform: translateY(-100vh);
+        transition: transform .5s;
+        
+    }
+    .cont-form-contenido.activo .form-contenido{
+        transform: translateY(0);
+    }
+
+
+    .cont-titulo-form{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 20px;
+    }
+    .titulo-form{
+        color: #3175da;
+    }
+    .icono-cerrar{
+        cursor: pointer;
+        color: grey;
+        font-size: 30px;
+    }
+    .icono-cerrar:hover{
+        color: red;
+    }   
+
+    .cont-tipo{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0px 20px;
+        color: grey;
+        font-size: 14px;
+    }
+
+    .imput{
+        height: 35px;
+        border-radius: 10px;
+        border: 1px solid grey;
+        padding: 0 10px;
+    }
+    .imput.error{
+        border: 1px solid red;
+  
+    }
+
+    .boton-submit{
+        height: 35px;
+        border-radius: 10px;
+        border: none;
+        background-color: #28b463;
+        color: white;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        cursor: pointer;
+        outline: none;
+    }
+
+    .boton-submit:hover{
+        opacity: .8;
+        scale: 1.02;
+    }
+
+
+</style>
