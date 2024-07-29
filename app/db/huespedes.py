@@ -27,8 +27,9 @@ def obtener_huespedes():
                             JOIN hues_res hr ON h.ID = hr.huespedes_id
                             JOIN reservas r ON hr.reservas_id = r.ID
                             JOIN habitaciones ha ON r.habitaciones_id = ha.ID
-                            WHERE h.estado = "activo"
-                            GROUP BY h.nombre, ha.numero
+                            WHERE h.estado = "activo" AND r.estado = "activa"
+                            GROUP BY h.nombre
+                            ORDER BY ha.numero
                        ''')
         resultado = cursor.fetchall()
         if resultado:
@@ -51,7 +52,8 @@ def filtrar_huespedes(estado='activo'):
                             JOIN hues_res hr ON h.ID = hr.huespedes_id
                             JOIN reservas r ON hr.reservas_id = r.ID
                             JOIN habitaciones ha ON r.habitaciones_id = ha.ID
-                            GROUP BY h.nombre, ha.numero
+                            
+                            ORDER BY ha.numero
                        '''
         else:
             query = '''SELECT h.*, ha.numero AS numero_hab
@@ -60,7 +62,8 @@ def filtrar_huespedes(estado='activo'):
                             JOIN reservas r ON hr.reservas_id = r.ID
                             JOIN habitaciones ha ON r.habitaciones_id = ha.ID
                             WHERE h.estado = %s
-                            GROUP BY h.nombre, ha.numero
+                            GROUP BY h.nombre
+                            ORDER BY ha.numero
                        '''
         cursor.execute(query, (estado,) if estado != 'todos' else ())
         resultado = cursor.fetchall()

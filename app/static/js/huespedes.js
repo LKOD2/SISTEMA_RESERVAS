@@ -9,37 +9,7 @@ function cargarHuespedes() {
         const conthuespedes = document.getElementById('main');
         conthuespedes.innerHTML = huespedes
 
-        //----------------------------------------------------------------
-
-
-        const modalCrearHuesped = document.getElementById("cont-form-crear-huesped");
-        const modalEditHuesped = document.getElementById('cont-form-edit-huesped');
-        const openModalBtn = document.getElementById('boton-crear-huesped');
-
-
-        let listaIconoCerrar = document.querySelectorAll('.icono-cerrar');
-        listaIconoCerrar.forEach(icono =>{
-            icono.addEventListener('click', ()=>{
-                modalCrearHuesped.classList.remove('activo');
-                modalEditHuesped.classList.remove('activo');
-            })
-        })
-
-        openModalBtn.onclick = function() {
-            modalCrearHuesped.classList.add('activo');
-            modalEditHuesped.classList.remove('activo');
-        }
-
-        // Función para cerrar los modales al hacer clic fuera de su contenido
-
-        window.onclick = function(event) {
-            if (event.target === modalCrearHuesped) {
-                modalCrearHuesped.classList.remove('activo');
-            } else if (event.target === modalEditHuesped) {
-                modalEditHuesped.classList.remove('activo');
-            }
-        }
-
+        //--------------------------------------------------------
 
         editarhuesped()
         crearhuesped()
@@ -49,7 +19,35 @@ function cargarHuespedes() {
     });
 };
 
+function modalHuespedes(){
+    const modalCrearHuesped = document.getElementById("cont-form-crear-huesped");
+    const modalEditHuesped = document.getElementById('cont-form-edit-huesped');
+    const openModalBtn = document.getElementById('boton-crear-huesped');
 
+
+    let listaIconoCerrar = document.querySelectorAll('.icono-cerrar');
+    listaIconoCerrar.forEach(icono =>{
+        icono.addEventListener('click', ()=>{
+            modalCrearHuesped.classList.remove('activo');
+            modalEditHuesped.classList.remove('activo');
+        })
+    })
+
+    openModalBtn.onclick = function() {
+        modalCrearHuesped.classList.add('activo');
+        modalEditHuesped.classList.remove('activo');
+    }
+
+    // Función para cerrar los modales al hacer clic fuera de su contenido
+
+    window.onclick = function(event) {
+        if (event.target === modalCrearHuesped) {
+            modalCrearHuesped.classList.remove('activo');
+        } else if (event.target === modalEditHuesped) {
+            modalEditHuesped.classList.remove('activo');
+        }
+    }
+}
 
 
 //------------------------ CREAR huesped ----------------------

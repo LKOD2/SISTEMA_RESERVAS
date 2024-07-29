@@ -9,7 +9,7 @@ class Salida:
         if connection:
             try:
                 cursor = connection.cursor(dictionary=True)
-                query = """SELECT * FROM reservas WHERE habitaciones_id = %s"""
+                query = """SELECT * FROM reservas WHERE habitaciones_id = %s AND estado = 'activa'"""
                 cursor.execute(query, (id_hab,))
                 result = cursor.fetchone()
                 return result

@@ -1,7 +1,7 @@
 from conection import conex
 import mysql.connector
 
-def finalizar(reserva_id, multa_pago):
+def finalizar(reserva_id, multa_pago, total_pago):
     connection = conex()
     if connection:
         try:
@@ -34,12 +34,12 @@ def finalizar(reserva_id, multa_pago):
                 cursor.execute(query_update_huesped, (huesped_id,))
 
             # Actualizar estado de la habitación
-            query_update_habitacion = "UPDATE habitaciones SET estado = 'disponible' WHERE ID = %s"
+            query_update_habitacion = "UPDATE habitaciones SET estado = 'limpieza' WHERE ID = %s"
             cursor.execute(query_update_habitacion, (habitacion_id,))
 
             # Actualizar estado del pago
-            query_update_pago = "UPDATE pagos SET estado_pago = 'completado', multa = %s WHERE ID = %s"
-            cursor.execute(query_update_pago, (multa_pago, pagos_id))
+            query_update_pago = "UPDATE pagos SET estado_pago = 'completado', multa = %s, total = %s WHERE ID = %s"
+            cursor.execute(query_update_pago, (multa_pago, total_pago, pagos_id))
 
             # Actualizar estado de la reserva
             query_update_reserva = "UPDATE reservas SET estado = 'finalizada' WHERE ID = %s"

@@ -29,7 +29,7 @@
                     <td>{{habitacion.tipo}}</td>
                     <td>{{habitacion.orientacion}}</td>
                     <td>{{habitacion.precio}}</td>
-                    <td>{{habitacion.estado}}</td>
+                    <td><div class="estado {{habitacion.estado}}">{{habitacion.estado}}</div></td>
                     
                     <td>
                         <button class="acciones editar hab" id="boton-editar" data-habitacion="{{ habitacion.numero }}" type="button"><i class='bx bxs-edit-alt'></i></button>
@@ -153,6 +153,26 @@
 
 
 <style>
+
+    .estado{
+        background-color: grey;
+        padding: 1px 3px;
+        color: white;
+        width: fit-content;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+    .estado.disponible{
+        background-color: #28B463;
+    }
+    .estado.limpieza{
+        background-color: #3498DB;
+    }
+    .estado.ocupada{
+        background-color: #E74C3C;
+    }
+
+
 
     .form-group{
         display: flex;

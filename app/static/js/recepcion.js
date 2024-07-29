@@ -31,13 +31,11 @@ function selectHabitacionRecepcion() {
                 const main = document.getElementById('main');
                 main.innerHTML = datos;
 
-                let fechaEntradaInput = document.getElementById('imput-fecha-entrada');
-                let fechaActual = new Date().toISOString().split('T')[0];  // Obtener fecha actual en formato YYYY-MM-DD
-                fechaEntradaInput.value = fechaActual;
+                cargarFecha();
                 crearRecepcion();
+                cargaInicial();
 
                 expandirResp();
-                cargaInicial();
         
             })
             .catch(error => console.error('Error:', error));
@@ -45,200 +43,74 @@ function selectHabitacionRecepcion() {
     });
 }
 
+function cargarFecha(){
+    const fechaSalidaInput = document.getElementById('imput-fecha-salida');
+    const fechaEntradaInput = document.getElementById('imput-fecha-entrada');
+    
+    let fechaActual = new Date().toISOString().split('T')[0];  // Obtener fecha actual en formato YYYY-MM-DD
+    fechaEntradaInput.value = fechaActual;
 
+    const today = new Date().toISOString().split('T')[0];
+    fechaSalidaInput.setAttribute('min', fechaActual || today);
+}
 
-
-// function crearRecepcion(){
-
-//     document.getElementById('form-recepcion').addEventListener('submit', function(event) {
-//         event.preventDefault();
-//         let data = {};
-
-//         const idHabitacion = document.getElementById('rec-datos-habitacion').getAttribute('ID-hab')
-
-//         data.habitacion = {ID: idHabitacion}
-
-//         // Validar y recolectar datos del primer huesped
-//         if (document.getElementById('form-huesped-resp')) {
-
-//             if(document.getElementById('responsable').checked){
-//                 data.huespedRes = {
-//                     responsable: document.getElementById('responsable').checked,
-//                     nombre: document.getElementById('imput-nombre-huesped').value,
-//                     apellido: document.getElementById('imput-apellido-huesped').value,
-//                     email: document.getElementById('imput-email-huesped').value,
-//                     telefono: document.getElementById('imput-telefono-huesped').value,
-//                     pais: document.getElementById('imput-pais-huesped').value,
-//                     tipoDocumento: document.getElementById('imput-tipo-doc-huesped').value,
-//                     numDocumento: document.getElementById('imput-num-doc-huesped').value
-//                 };
-//             }
-//         }
-
-//         // Validar y recolectar datos del segundo huesped si la habitacion es doble o triple
-//         if (document.getElementById('form-huesped-1')) {
-//             data.huesped1 = {
-//                 nombre: document.getElementById('imput-nombre-h1').value,
-//                 apellido: document.getElementById('imput-apellido-h1').value,
-//                 email: document.getElementById('imput-email-h1').value,
-//                 telefono: document.getElementById('imput-telefono-h1').value,
-//                 pais: document.getElementById('imput-pais-h1').value,
-//                 tipoDocumento: document.getElementById('imput-tipo-doc-h1').value,
-//                 numDocumento: document.getElementById('imput-num-doc-h1').value
-//             };
-//         }
-
-//         // Validar y recolectar datos del tercer huesped si la habitacion es triple
-//         if (document.getElementById('form-huesped-2')) {
-//             data.huesped2 = {
-//                 nombre: document.getElementById('imput-nombre-h2').value,
-//                 apellido: document.getElementById('imput-apellido-h2').value,
-//                 email: document.getElementById('imput-email-h2').value,
-//                 telefono: document.getElementById('imput-telefono-h2').value,
-//                 pais: document.getElementById('imput-pais-h2').value,
-//                 tipoDocumento: document.getElementById('imput-tipo-doc-h2').value,
-//                 numDocumento: document.getElementById('imput-num-doc-h2').value
-//             };
-//         }
-//         if (document.getElementById('form-huesped-3')) {
-//             data.huesped3 = {
-//                 nombre: document.getElementById('imput-nombre-h3').value,
-//                 apellido: document.getElementById('imput-apellido-h3').value,
-//                 email: document.getElementById('imput-email-h3').value,
-//                 telefono: document.getElementById('imput-telefono-h3').value,
-//                 pais: document.getElementById('imput-pais-h3').value,
-//                 tipoDocumento: document.getElementById('imput-tipo-doc-h3').value,
-//                 numDocumento: document.getElementById('imput-num-doc-h3').value
-//             };
-//         }
-
-//         // Recolectar datos de la reserva
-//         data.reserva = {
-//             fechaEntrada: document.getElementById('imput-fecha-entrada').value,
-//             fechaSalida: document.getElementById('imput-fecha-salida').value,
-//             observacion: document.getElementById('imput-observacion').value
-//         };
-
-
-//         const tipoPago =  document.getElementById('imput-tipo-pago').value
-//         const adelanto = document.getElementById('imput-adelanto').value
-//         const totalPago = document.getElementById('imput-total-pago').value
-//         var estadoPago = ''
-
-//         if (parseFloat(adelanto) == parseFloat(totalPago)){
-//             estadoPago = 'pagado'
-//         }else{
-//             estadoPago = 'pendiente'
-//         }
-
-//         data.pago = {
-//             tipoPago: tipoPago,
-//             adelanto: adelanto,
-//             totalPago: totalPago,
-//             estadoPago: estadoPago
-//         };
-
-
-
-//         console.log(data);
-
-//         // // Enviar datos al servidor
-//         // fetch('/reservar', {
-//         //     method: 'POST',
-//         //     headers: {
-//         //         'Content-Type': 'application/json'
-//         //     },
-//         //     body: JSON.stringify(data)
-//         // })
-//         // .then(response => response.json())
-//         // .then(data => {
-//         //     if (data.estado) {
-//         //         alert('Reserva registrada exitosamente.');
-//         //     } else {
-//         //         alert('Ocurrió un error al registrar la reserva.');
-//         //     }
-//         // })
-//         // .catch(error => console.error('Error:', error));
-//     });
-
-// }
-
-// function expandirResp(){
-
-//     document.getElementById('responsable').addEventListener('change', function() {
-//         const formHuespedResp = document.getElementById('form-huesped-resp');
-//         const isChecked = this.checked;
-
-//         formHuespedResp.querySelectorAll('input, select').forEach(element => {
-//             element.disabled = !isChecked;
-//         });
-
-//         if (this.checked) {
-//             formHuespedResp.classList.add('activo');
-//         } else {
-//             formHuespedResp.classList.remove('activo');
-//             const huesped1 = document.getElementById('form-huesped-1');
-//             huesped1.classList.add('activo')
-
-//         }
-//     });
-
-// };
 
 function cargaInicial(){
-        const fechaEntradaInput = document.getElementById('imput-fecha-entrada');
+    const adelantoInput = document.getElementById('imput-adelanto');
+    const totalPagoInput = document.getElementById('imput-total-pago');
+    const precioHabitacion = parseFloat(totalPagoInput.value); // Precio por día de la habitación
+    const botonSubmit = document.querySelector('.boton-submit');
+
+    console.log('carga inicial');
+    calcularDiasYTotal()   
+
+    function calcularDiasYTotal() {
+
         const fechaSalidaInput = document.getElementById('imput-fecha-salida');
-        const adelantoInput = document.getElementById('imput-adelanto');
-        const totalPagoInput = document.getElementById('imput-total-pago');
-        const precioHabitacion = parseFloat(totalPagoInput.value); // Precio por día de la habitación
-        const botonSubmit = document.querySelector('.boton-submit');
+        const fechaEntradaInput = document.getElementById('imput-fecha-entrada');
+
+        fechaSalidaInput.addEventListener('change', ()=>{ 
     
-        // Establecer fecha mínima para la salida
-        const fechaEntrada = new Date(fechaEntradaInput.value);
-        const today = new Date().toISOString().split('T')[0];
-        fechaSalidaInput.setAttribute('min', fechaEntrada.toISOString().split('T')[0] || today);
-    
-        function calcularDiasYTotal() {
+            const fechaEntrada = new Date(fechaEntradaInput.value);
             const fechaSalida = new Date(fechaSalidaInput.value);
     
             if (fechaSalida && fechaSalida > fechaEntrada) {
                 const daysDiff = (fechaSalida - fechaEntrada) / (1000 * 60 * 60 * 24);
                 const totalPago = daysDiff * precioHabitacion;
-                totalPagoInput.value = totalPago.toFixed(2);
+                totalPagoInput.value = totalPago;
     
                 validarAdelanto(); // Asegura que el adelanto sea válido respecto al total
             } else {
                 totalPagoInput.value = 0;
             }
-        }
-    
-        function validarAdelanto() {
-            const adelanto = parseFloat(adelantoInput.value);
-            const totalPago = parseFloat(totalPagoInput.value);
-    
-            if (adelanto > totalPago) {
-                alert('El adelanto no puede ser mayor que el total a pagar.');
-                adelantoInput.value = 0;
-            }
-        }
-    
-        // Calcular total a pagar al seleccionar la fecha de salida
-        fechaSalidaInput.addEventListener('change', calcularDiasYTotal);
-    
-        // Validar adelanto cuando el usuario lo introduce
-        adelantoInput.addEventListener('input', validarAdelanto);
-    
-        // Controlar envío del formulario
-        botonSubmit.addEventListener('click', function(event) {
-            const adelanto = parseFloat(adelantoInput.value);
-            const totalPago = parseFloat(totalPagoInput.value);
-    
-            if (adelanto > totalPago) {
-                alert('El adelanto no puede ser mayor que el total a pagar.');
-                event.preventDefault(); // Evitar el envío del formulario
-            }
         });
-    };
+    }
+
+    adelantoInput.addEventListener('input', validarAdelanto);
+
+    function validarAdelanto() {
+        const adelanto = parseFloat(adelantoInput.value);
+        const totalPago = parseFloat(totalPagoInput.value);
+
+        if (adelanto > totalPago) {
+            alert('El adelanto no puede ser mayor que el total a pagar.');
+            adelantoInput.value = 0;
+        }
+    }
+
+    
+
+    // Controlar envío del formulario
+    botonSubmit.addEventListener('click', function(event) {
+        const adelanto = parseFloat(adelantoInput.value);
+        const totalPago = parseFloat(totalPagoInput.value);
+
+        if (adelanto > totalPago) {
+            alert('El adelanto no puede ser mayor que el total a pagar.');
+            event.preventDefault(); // Evitar el envío del formulario
+        }
+    });
+};
     
 
 //-------------------------------------------------------------------------
@@ -379,12 +251,22 @@ function crearRecepcion() {
         // Recolectar datos del pago
         const tipoPago = document.getElementById('imput-tipo-pago').value;
         const adelanto = document.getElementById('imput-adelanto').value;
-        const totalPago = document.getElementById('imput-total-pago').value;
-        var estadoPago = (parseFloat(adelanto) === parseFloat(totalPago)) ? 'pagado' : 'pendiente';
+        const precioInicial = document.getElementById('imput-total-pago').value;
+        if (parseFloat(adelanto) === parseFloat(precioInicial)){
+            var restante = 0
+            var totalPago = precioInicial
+            var estadoPago = 'pagado'
+        }else{
+            restante = precioInicial - adelanto
+            estadoPago = 'pendiente'
+            totalPago = 0
+        }
 
         data.pago = {
             tipoPago: tipoPago,
+            precioInicial: precioInicial,
             adelanto: adelanto,
+            restante: restante,
             totalPago: totalPago,
             estadoPago: estadoPago
         };
@@ -410,4 +292,125 @@ function crearRecepcion() {
         .catch(error => console.error('Error:', error));
     });
 }
+
+
+
+
+
+// function crearRecepcion(){
+
+//     document.getElementById('form-recepcion').addEventListener('submit', function(event) {
+//         event.preventDefault();
+//         let data = {};
+
+//         const idHabitacion = document.getElementById('rec-datos-habitacion').getAttribute('ID-hab')
+
+//         data.habitacion = {ID: idHabitacion}
+
+//         // Validar y recolectar datos del primer huesped
+//         if (document.getElementById('form-huesped-resp')) {
+
+//             if(document.getElementById('responsable').checked){
+//                 data.huespedRes = {
+//                     responsable: document.getElementById('responsable').checked,
+//                     nombre: document.getElementById('imput-nombre-huesped').value,
+//                     apellido: document.getElementById('imput-apellido-huesped').value,
+//                     email: document.getElementById('imput-email-huesped').value,
+//                     telefono: document.getElementById('imput-telefono-huesped').value,
+//                     pais: document.getElementById('imput-pais-huesped').value,
+//                     tipoDocumento: document.getElementById('imput-tipo-doc-huesped').value,
+//                     numDocumento: document.getElementById('imput-num-doc-huesped').value
+//                 };
+//             }
+//         }
+
+//         // Validar y recolectar datos del segundo huesped si la habitacion es doble o triple
+//         if (document.getElementById('form-huesped-1')) {
+//             data.huesped1 = {
+//                 nombre: document.getElementById('imput-nombre-h1').value,
+//                 apellido: document.getElementById('imput-apellido-h1').value,
+//                 email: document.getElementById('imput-email-h1').value,
+//                 telefono: document.getElementById('imput-telefono-h1').value,
+//                 pais: document.getElementById('imput-pais-h1').value,
+//                 tipoDocumento: document.getElementById('imput-tipo-doc-h1').value,
+//                 numDocumento: document.getElementById('imput-num-doc-h1').value
+//             };
+//         }
+
+//         // Validar y recolectar datos del tercer huesped si la habitacion es triple
+//         if (document.getElementById('form-huesped-2')) {
+//             data.huesped2 = {
+//                 nombre: document.getElementById('imput-nombre-h2').value,
+//                 apellido: document.getElementById('imput-apellido-h2').value,
+//                 email: document.getElementById('imput-email-h2').value,
+//                 telefono: document.getElementById('imput-telefono-h2').value,
+//                 pais: document.getElementById('imput-pais-h2').value,
+//                 tipoDocumento: document.getElementById('imput-tipo-doc-h2').value,
+//                 numDocumento: document.getElementById('imput-num-doc-h2').value
+//             };
+//         }
+//         if (document.getElementById('form-huesped-3')) {
+//             data.huesped3 = {
+//                 nombre: document.getElementById('imput-nombre-h3').value,
+//                 apellido: document.getElementById('imput-apellido-h3').value,
+//                 email: document.getElementById('imput-email-h3').value,
+//                 telefono: document.getElementById('imput-telefono-h3').value,
+//                 pais: document.getElementById('imput-pais-h3').value,
+//                 tipoDocumento: document.getElementById('imput-tipo-doc-h3').value,
+//                 numDocumento: document.getElementById('imput-num-doc-h3').value
+//             };
+//         }
+
+//         // Recolectar datos de la reserva
+//         data.reserva = {
+//             fechaEntrada: document.getElementById('imput-fecha-entrada').value,
+//             fechaSalida: document.getElementById('imput-fecha-salida').value,
+//             observacion: document.getElementById('imput-observacion').value
+//         };
+
+
+//         const tipoPago =  document.getElementById('imput-tipo-pago').value
+//         const adelanto = document.getElementById('imput-adelanto').value
+//         const totalPago = document.getElementById('imput-total-pago').value
+//         var estadoPago = ''
+
+//         if (parseFloat(adelanto) == parseFloat(totalPago)){
+//             estadoPago = 'pagado'
+//         }else{
+//             estadoPago = 'pendiente'
+//         }
+
+//         data.pago = {
+//             tipoPago: tipoPago,
+//             adelanto: adelanto,
+//             totalPago: totalPago,
+//             estadoPago: estadoPago
+//         };
+
+
+
+//         console.log(data);
+
+//         // // Enviar datos al servidor
+//         // fetch('/reservar', {
+//         //     method: 'POST',
+//         //     headers: {
+//         //         'Content-Type': 'application/json'
+//         //     },
+//         //     body: JSON.stringify(data)
+//         // })
+//         // .then(response => response.json())
+//         // .then(data => {
+//         //     if (data.estado) {
+//         //         alert('Reserva registrada exitosamente.');
+//         //     } else {
+//         //         alert('Ocurrió un error al registrar la reserva.');
+//         //     }
+//         // })
+//         // .catch(error => console.error('Error:', error));
+//     });
+
+// }
+
+
 
