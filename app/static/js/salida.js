@@ -67,7 +67,7 @@ function enviarSalida() {
             if (result.estado) {
                 alert('Reserva finalizada con éxito');
                 // Opcional: Redirigir o actualizar la página después del éxito
-                window.location.href = '/pagina_exito'; // Cambia esta URL según sea necesario
+                cargarInicio(); // Cambia esta URL según sea necesario
             } else {
                 alert(`Error: ${result.mensaje}`);
             }
@@ -80,20 +80,17 @@ function enviarSalida() {
 
 
 function calcularMontos() {
+    
     const multaPagoInput = document.getElementById('multa-pago');
     multaPagoInput.addEventListener('input', ()=>{
 
-        // Obtener los valores del formulario
-        const costoHabitacion = parseFloat(document.getElementById('costo-habitacion').value) || 0;
-        const adelanto = parseFloat(document.getElementById('adelanto').value) || 0;
         const restantePago = parseFloat(document.getElementById('restante-pago').value) || 0;
         const multaPago = parseFloat(document.getElementById('multa-pago').value) || 0;
 
-        // Calcular el total a pagar
         const totalPago = restantePago + multaPago;
 
         // Actualizar el campo total a pagar
-        document.getElementById('total-pago').value = totalPago.toFixed(2);
+        document.getElementById('total-pago').value = totalPago;
     });
 }
 

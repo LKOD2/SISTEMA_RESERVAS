@@ -12,6 +12,17 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
 });
 
+function cargarInicio(){
+    fetch('/inicio')
+    .then(respuesta => respuesta.text())
+    .then(datos => {
+        const contUsuarios = document.getElementById('main');
+        contUsuarios.innerHTML = datos;
+
+        selectMenuInicio()
+    });
+}
+
 document.getElementById('item-inicio').addEventListener('click', ()=>{
 
     fetch('/inicio')

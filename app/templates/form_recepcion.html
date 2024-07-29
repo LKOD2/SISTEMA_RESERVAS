@@ -311,7 +311,7 @@
                         </div>
                         <div class="form-group">
                             <label for="imput-total-pago">Total a pagar</label>
-                            <input class="imput" id="imput-total-pago" type="number" name="total-pago" placeholder="Total" min="0" value="{{data.precio}}" required>
+                            <input class="imput" id="imput-total-pago" type="number" name="total-pago" placeholder="Total" min="0" value="{{data.precio}}" readonly required>
                         </div>
 
                     </div>
@@ -330,6 +330,13 @@
 </div>
 
 <style>
+
+    .imput[readonly] {
+        background-color: #e9ecef;
+        color: #6c757d;
+        cursor: not-allowed;
+        border-color: #ced4da;
+    }
 
     .cont-responsable{
         display: flex;

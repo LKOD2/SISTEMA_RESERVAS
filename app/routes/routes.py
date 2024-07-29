@@ -185,16 +185,13 @@ def reservar():
 
     # Relacionar huéspedes con la reserva
     for huesped_data in huespedes_data:
-
-        huesped_id = Huesped.obtener_id_existente(huesped_data['tipoDocumento'], huesped_data['numDocumento'])
-        
-        if not huesped_id:
-            huesped = Huesped(**huesped_data)
-            huesped_id = huesped.insertar()
+        huesped = Huesped(**huesped_data)
+        huesped_id = huesped.insertar()
 
         if huesped_id:
             responsable = huesped_data.get('responsable', False)
             reserva.relacionar_huesped(huesped_id, responsable)
+
     
     # Actualizar estado de la habitación
     Habitacion.actualizar_estado(habitacion_data['ID'], 'ocupada')
@@ -244,11 +241,12 @@ def get_form_salida():
 def salida():
     reserva_id = request.form.get('reserva_id')
     multa_pago = request.form.get('multa-pago')
+    total_pago = request.form.get('total-pago')
 
     if not reserva_id:
         return jsonify({'estado': False, 'mensaje': 'ID de reserva no proporcionado'})
 
-    respuesta = finalizar(reserva_id, multa_pago)
+    respuesta = finalizar(reserva_id, multa_pago, total_pago)
 
     return jsonify(respuesta)
 
